@@ -1,6 +1,6 @@
 import { Card } from '../../shared/ui/Card'
 import MoneyBox from '../../shared/icons/MoneyBox.svg'
-import Right from '../../shared/icons/Right.svg'
+import Right from '../../shared/icons/RIght.svg'
 import { Input } from '../../shared/ui/Input'
 import { Button } from '../../shared/ui/Button'
 import PropTypes from 'prop-types'
