@@ -6,7 +6,7 @@ import { ShopSidebar } from '../../widgets/ShopSidebar'
 import { Link } from 'react-router-dom'
 import Back from '../../shared/ui/Back/Back'
 import { Button } from '../../shared/ui/Button'
-import RightUp from '../../shared/icons/RightUp.svg'
+import RightUp from '../../shared/icons/RIghtUp.svg'
 
 const item = {
   name: 'Воронка продаж 4.0 (Продвинутая версия)',

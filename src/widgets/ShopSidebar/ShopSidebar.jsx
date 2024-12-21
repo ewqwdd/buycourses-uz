@@ -2,7 +2,7 @@ import { Card } from '../../shared/ui/Card'
 import ShopSidebarSwitcher from './ShopSidebarSwitcher'
 import MoneyBox from '../../shared/icons/MoneyBox.svg'
 import { Button } from '../../shared/ui/Button'
-import RightUp from '../../shared/icons/RightUp.svg'
+import RightUp from '../../shared/icons/RIghtUp.svg'
 import { memo } from 'react'
 
 export default memo(function ShopSidebar() {
