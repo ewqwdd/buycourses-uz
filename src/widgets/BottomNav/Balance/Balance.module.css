@@ -1,0 +1,45 @@
+.ellipse1 {
+  background: radial-gradient(
+    ellipse farthest-side at 50% 50%,
+    hsla(47, 100%, 61%, 1) 99.9%,
+    hsla(47, 100%, 61%, 0) 99.9%,
+    hsla(47, 100%, 61%, 0) 100%
+  );
+  position: absolute;
+  width: 45px;
+  height: 27px;
+  top: 5px;
+  left: -2px;
+  opacity: 0.3;
+  filter: blur(18px);
+}
+.ellipse2 {
+  background: radial-gradient(
+    ellipse farthest-side at 50% 50%,
+    hsla(0, 100%, 66%, 1) 99.9%,
+    hsla(0, 100%, 66%, 0) 99.9%,
+    hsla(0, 100%, 66%, 1) 100%
+  );
+  position: absolute;
+  width: 40px;
+  height: 27px;
+  top: 5px;
+  left: 66px;
+  opacity: 0.2;
+  filter: blur(20px);
+}
+.ellipse3 {
+  background: radial-gradient(
+    ellipse farthest-side at 50% 50%,
+    hsla(281, 100%, 66%, 1) 99.9%,
+    hsla(281, 100%, 66%, 0) 99.9%,
+    hsla(281, 100%, 66%, 0) 100%
+  );
+  position: absolute;
+  width: 45px;
+  height: 29px;
+  top: 4px;
+  left: 31px;
+  opacity: 0.2;
+  filter: blur(20px);
+}
