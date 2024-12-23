@@ -1,11 +1,12 @@
 import { memo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Button from '../../shared/ui/Button/Button'
 import Add from '../../shared/icons/Add.svg'
 import Home from '../../shared/icons/Add.svg'
 import Help from '../../shared/icons/Add.svg'
 import NavButton from './NavButton'
 import { BottomNav } from '../BottomNav'
+import { noNavPages } from '../../shared/routerConfig'
 
 const links = [
   {
@@ -26,6 +27,10 @@ const links = [
 ]
 
 export default memo(function Nav() {
+  const { pathname } = useLocation()
+
+  if (noNavPages.find((elem) => pathname.includes(elem))) return null
+
   return (
     <nav className="flex flex-col items-center pt-4 px-10">
       <div className="flex justify-between relative max-w-8xl w-full min-h-[42px] items-center border-b border-b-overlay pb-4">
@@ -45,10 +50,16 @@ export default memo(function Nav() {
         </div>
 
         <div className="flex items-center gap-4 flex-1 justify-end">
-          <Link to="/login" className="text-sm text-secondary font-semibold">
+          <Link to="/auth" state={{ prev: pathname }} className="text-sm text-secondary font-semibold">
             Войти
           </Link>
-          <Button className={'border border-accent2 outline outline-1 -outline-offset-2 outline-accent3'} size={'sm'}>
+          <Button
+            as={Link}
+            to="/auth"
+            state={{ prev: pathname }}
+            className={'border border-accent2 outline outline-1 -outline-offset-2 outline-accent3'}
+            size={'sm'}
+          >
             Регистрация
           </Button>
         </div>

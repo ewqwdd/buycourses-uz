@@ -1,3 +1,5 @@
+import { Auth } from "../pages/Auth";
+import { AuthConfirm } from "../pages/AuthConfirm";
 import { Category } from "../pages/Category";
 import { Home } from "../pages/Home";
 import { Item } from "../pages/Item";
@@ -15,6 +17,12 @@ export const routerConfig = {
   '/top-up': {
     component: <TopUp />
   },
+  '/auth': {
+    component: <Auth />
+  },
+  '/auth-confirm': {
+    component: <AuthConfirm />
+  },
   '/warehouse/withdraw': {
     component: <WarehouseWithdraw />
   },
@@ -25,3 +33,5 @@ export const routerConfig = {
     component: <Item />
   },
 };
+
+export const noNavPages = ['/auth', '/auth-confirm'];

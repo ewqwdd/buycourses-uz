@@ -6,7 +6,8 @@ export default function Input({ className, right, ...props }) {
     <div className="relative">
       <input
         className={cva(
-          'bg-overlay rounded-xl placeholder:text-teritary font-medium text-base min-h-[42px] px-4 w-full',
+          'bg-overlay rounded-xl placeholder:text-teritary font-medium text-base min-h-[42px] px-4 w-full border border-transparent transition-all ring-0 ring-accent/20 outline-none',
+          'focus:border-accent focus:ring-[3px] focus:outline-none',
           {
             'pr-14': !!right,
           },
