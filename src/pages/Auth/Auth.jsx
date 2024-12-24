@@ -6,11 +6,13 @@ import { MainNoNav } from '../../widgets/MainNoNav'
 import Right from '../../shared/icons/RIght.svg'
 import QuestionMark from '../../shared/icons/Questionmark.svg'
 import { Link } from 'react-router-dom'
+import { Title } from '../../shared/ui/Title'
 
 export default function Auth() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
   return (
     <MainNoNav>
+    <Title title={'Auth'}/>
       <div className="mt-[74px] self-center flex flex-col max-w-[312px] w-full">
         <SquareAvatar className={'self-center'} />
         <h1 className="text-primary font-bold text-xl mt-4 text-center">BuyCourses.uz</h1>

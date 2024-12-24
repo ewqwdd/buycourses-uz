@@ -4,6 +4,7 @@ import { Main } from '../../widgets/Main'
 import { ShopSidebar } from '../../widgets/ShopSidebar'
 import Back from '../../shared/ui/Back/Back'
 import { Product } from '../../widgets/Product'
+import { Title } from '../../shared/ui/Title'
 
 const items = [
   {
@@ -23,6 +24,7 @@ export default function Category() {
   const { pathname } = useLocation()
   return (
     <Main>
+      <Title title={'Воронка продаж 4.0 (Продвинутая версия)'} />
       <DefaultHeader title={'Воронка продаж 4.0 (Продвинутая версия)'} subTitle={subTitle} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />

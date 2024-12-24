@@ -6,16 +6,19 @@ import { Item } from "../pages/Item";
 import { TopUp } from "../pages/TopUp";
 import { Warehouse } from "../pages/Warehouse";
 import { WarehouseWithdraw } from "../pages/WarehouseWithdraw";
+import { Support } from "../widgets/Support";
 
 export const routerConfig = {
   '': {
     component: <Home />
   },
   '/warehouse': {
-    component: <Warehouse />
+    component: <Warehouse />,
+    requireAuth: true,
   },
   '/top-up': {
-    component: <TopUp />
+    component: <TopUp />,
+    requireAuth: true,
   },
   '/auth': {
     component: <Auth />
@@ -24,7 +27,8 @@ export const routerConfig = {
     component: <AuthConfirm />
   },
   '/warehouse/withdraw': {
-    component: <WarehouseWithdraw />
+    component: <WarehouseWithdraw />,
+    requireAuth: true,
   },
   '/:slug': {
     component: <Category />
@@ -32,6 +36,9 @@ export const routerConfig = {
   '/:slug/:item': {
     component: <Item />
   },
+  '/help': {
+    component: <Support />
+  }
 };
 
 export const noNavPages = ['/auth', '/auth-confirm'];

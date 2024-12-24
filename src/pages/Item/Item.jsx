@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import Back from '../../shared/ui/Back/Back'
 import { Button } from '../../shared/ui/Button'
 import RightUp from '../../shared/icons/RIghtUp.svg'
+import { Title } from '../../shared/ui/Title'
 
 const item = {
   name: 'Воронка продаж 4.0 (Продвинутая версия)',
@@ -36,6 +37,7 @@ export default function Item() {
 
   return (
     <Main>
+      <Title title="Воронка продаж 4.0 (Продвинутая версия)" />
       <DefaultHeader title={item.name} subTitle={back} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />

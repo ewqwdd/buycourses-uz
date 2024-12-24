@@ -4,6 +4,7 @@ import MoneyBox from '../../shared/icons/MoneyBox.svg'
 import { Button } from '../../shared/ui/Button'
 import RightUp from '../../shared/icons/RIghtUp.svg'
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
 
 export default memo(function ShopSidebar() {
   return (
@@ -19,7 +20,7 @@ export default memo(function ShopSidebar() {
             </p>
           </div>
         </Card>
-        <Button variant="secondary">
+        <Button variant="secondary" as={Link} to="/top-up">
             Пополнить баланс
             <RightUp className="size-4" />
         </Button>

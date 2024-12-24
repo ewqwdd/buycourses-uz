@@ -1,35 +1,46 @@
 import { memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Button from '../../shared/ui/Button/Button'
 import Add from '../../shared/icons/Add.svg'
 import Home from '../../shared/icons/Add.svg'
 import Help from '../../shared/icons/Add.svg'
 import NavButton from './NavButton'
 import { BottomNav } from '../BottomNav'
 import { noNavPages } from '../../shared/routerConfig'
+import useUserStore from '../../shared/store/useUserStore'
+import NavLogin from './NavLogin'
+import NavDetails from './NavDetails'
 
 const links = [
   {
     href: '',
     text: 'Главная',
     icon: <Home />,
+    id: 0,
   },
   {
     href: '/top-up',
     text: 'Пополнить баланс',
     icon: <Add />,
+    id: 1,
   },
   {
     href: '/help',
     text: 'Поддержка',
     icon: <Help />,
+    id: 2,
   },
 ]
 
 export default memo(function Nav() {
   const { pathname } = useLocation()
+  const user = useUserStore(state => state.user)
+  const isMounted = useUserStore(state => state.isMounted)
 
   if (noNavPages.find((elem) => pathname.includes(elem))) return null
+
+  const active = [...links].reverse().find(e => pathname.includes(e.href))
+
+  const navRight = user ? <NavDetails user={user} /> : <NavLogin />
 
   return (
     <nav className="flex flex-col items-center pt-4 px-10">
@@ -45,24 +56,10 @@ export default memo(function Nav() {
           }}
         >
           {links.map((elem, index) => (
-            <NavButton key={index} {...elem} />
+            <NavButton active={active.id === elem.id} key={index} {...elem} />
           ))}
         </div>
-
-        <div className="flex items-center gap-4 flex-1 justify-end">
-          <Link to="/auth" state={{ prev: pathname }} className="text-sm text-secondary font-semibold">
-            Войти
-          </Link>
-          <Button
-            as={Link}
-            to="/auth"
-            state={{ prev: pathname }}
-            className={'border border-accent2 outline outline-1 -outline-offset-2 outline-accent3'}
-            size={'sm'}
-          >
-            Регистрация
-          </Button>
-        </div>
+          {isMounted ? navRight: <div className='flex-1' />}
       </div>
       <div className="h-[22px] mt-4 max-w-8xl w-full flex gap-8">
         <BottomNav />

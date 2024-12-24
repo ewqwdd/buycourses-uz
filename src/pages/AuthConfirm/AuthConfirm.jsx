@@ -2,10 +2,12 @@ import { Button } from "../../shared/ui/Button";
 import SquareAvatar from "../../shared/ui/SquareAvatar/SquareAvatar";
 import { MainNoNav } from "../../widgets/MainNoNav";
 import Refresh from '../../shared/icons/Refresh.svg'
+import { Title } from "../../shared/ui/Title";
 
 export default function AuthConfirm() {
     return (
     <MainNoNav>
+        <Title title={'Confirmation'}/>
         <div className="mt-[74px] self-center flex flex-col max-w-[312px] w-full font-medium text-base text-secondary">
             <SquareAvatar className={'self-center'} />
             <h1 className="text-primary font-bold text-xl mt-4 text-center">BuyCourses.uz</h1>

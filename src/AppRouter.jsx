@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router'
 import { Suspense } from 'react'
 import { routerConfig } from './shared/routerConfig'
+import { AuthRequired } from './widgets/AuthRequired'
 
 export default function AppRouter() {
   return (
@@ -11,7 +12,11 @@ export default function AppRouter() {
           path={elem}
           element={
             <Suspense>
-              {routerConfig[elem].component}
+              {routerConfig[elem].requireAuth ? (
+                <AuthRequired>{routerConfig[elem].component}</AuthRequired>
+              ) : (
+                routerConfig[elem].component
+              )}
             </Suspense>
           }
         />

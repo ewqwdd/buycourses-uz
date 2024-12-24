@@ -1,4 +1,5 @@
 import { Card } from '../../shared/ui/Card'
+import { Title } from '../../shared/ui/Title'
 import DefaultHeader from '../../widgets/DefaultHeader/DefaultHeader'
 import { Main } from '../../widgets/Main'
 import { TopUpSidebar } from '../../widgets/TopUpSidebar'
@@ -6,6 +7,7 @@ import { TopUpSidebar } from '../../widgets/TopUpSidebar'
 export default function TopUp() {
   return (
     <Main>
+      <Title title="Пополнение баланса" />
       <DefaultHeader title={'Пополнение баланса'} subTitle={'Баланс 17,43 рубля'} />
       <div className="flex gap-20 mt-10">
         <TopUpSidebar />

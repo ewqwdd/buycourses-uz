@@ -2,6 +2,7 @@ import { cva } from '../../shared/lib/cva'
 import { formatPrice } from '../../shared/lib/formatPrice'
 import { Card } from '../../shared/ui/Card'
 import { Status } from '../../shared/ui/Status'
+import { Title } from '../../shared/ui/Title'
 import DefaultHeader from '../../widgets/DefaultHeader/DefaultHeader'
 import { Main } from '../../widgets/Main'
 import WarehouseSidebar from '../../widgets/ShopSidebar/WarehouseSidebar'
@@ -29,6 +30,7 @@ const transactions = [
 export default function WarehouseWithdraw() {
   return (
     <Main>
+      <Title title="Вывод средств" />
       <DefaultHeader title={'Склад'} subTitle={'Пусто'} />
       <div className="flex gap-20 mt-10">
         <WarehouseSidebar />
