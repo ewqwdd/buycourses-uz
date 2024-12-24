@@ -4,7 +4,7 @@ import { Input } from '../../shared/ui/Input'
 import SquareAvatar from '../../shared/ui/SquareAvatar/SquareAvatar'
 import { MainNoNav } from '../../widgets/MainNoNav'
 import Right from '../../shared/icons/RIght.svg'
-import QuestionMark from '../../shared/icons/QuestionMark.svg'
+import QuestionMark from '../../shared/icons/Questionmark.svg'
 import { Link } from 'react-router-dom'
 
 export default function Auth() {
