@@ -5,11 +5,11 @@ import SquareAvatar from '../../shared/ui/SquareAvatar/SquareAvatar'
 import { MainNoNav } from '../../widgets/MainNoNav'
 import Right from '../../shared/icons/RIght.svg'
 import QuestionMark from '../../shared/icons/Questionmark.svg'
-import { useNavigate } from 'react-router-dom'
 import { Title } from '../../shared/ui/Title'
 import { useRef, useState } from 'react'
 import $api from '../../lib/$api'
 import toast from 'react-hot-toast'
+import useUserStore from '../../shared/store/useUserStore'
 
 export default function Register() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -17,7 +17,7 @@ export default function Register() {
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
   const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const setUser = useUserStore((state) => state.setUser)
 
   const register = () => {
     const password = passwordRef.current.value
@@ -41,9 +41,9 @@ export default function Register() {
         password: passwordRef.current.value,
         passwordConfirm: passwordConfirmRef.current.value,
       })
-      .then(() => {
-        toast.success('Успешно зарегистрированы')
-        navigate(`/auth-confirm?email=${email}`)
+      .then(async () => {
+        const { data } = await $api.get('/me')
+        setUser(data)
       })
       .catch((e) => {
         console.error(e)
@@ -67,7 +67,12 @@ export default function Register() {
         <p className={cva(pDefault, 'text-center mt-6')}>Регистарция</p>
         <Input ref={emailRef} className="mt-3 bg-foreground1" placeholder="Ваш email" />
         <Input ref={passwordRef} className="mt-3 bg-foreground1" type="password" placeholder="Пароль" />
-        <Input ref={passwordConfirmRef} className="mt-3 bg-foreground1" type="password" placeholder="Подтвердите пароль" />
+        <Input
+          ref={passwordConfirmRef}
+          className="mt-3 bg-foreground1"
+          type="password"
+          placeholder="Подтвердите пароль"
+        />
         <p className={cva(pDefault, 'mt-2')}>Если у вас нет аккаунта - мы его создадим</p>
         <Button className="mt-5" onClick={register}>
           Создать аккаунт

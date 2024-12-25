@@ -4,11 +4,11 @@ import { Input } from '../../shared/ui/Input'
 import SquareAvatar from '../../shared/ui/SquareAvatar/SquareAvatar'
 import { MainNoNav } from '../../widgets/MainNoNav'
 import Right from '../../shared/icons/RIght.svg'
-import { useNavigate } from 'react-router-dom'
 import { Title } from '../../shared/ui/Title'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import $api from '../../lib/$api'
+import useUserStore from '../../shared/store/useUserStore'
 
 export default function Login() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -16,7 +16,7 @@ export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+  const setUser = useUserStore(state => state.setUser)
 
   const login = () => {
     const password = passwordRef.current.value
@@ -33,8 +33,9 @@ export default function Login() {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       })
-      .then(() => {
-        navigate(`/auth-confirm?email=${email}`)
+      .then(async () => {
+          const { data } = await $api.get('/me')
+          setUser(data)
       })
       .catch((e) => {
         console.error(e)
