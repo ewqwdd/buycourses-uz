@@ -11,7 +11,7 @@ export default function AuthRequired({ children }) {
 
   useEffect(() => {
     if (isMounted && !user) {
-      navigate('/auth')
+      navigate('/login')
     }
   }, [isMounted, user])
 

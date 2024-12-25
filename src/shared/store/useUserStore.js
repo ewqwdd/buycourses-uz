@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import $api from "../../lib/$api";
 
 const useUserStore = create((set) => ({
   user: undefined,
@@ -20,6 +21,7 @@ const useUserStore = create((set) => ({
   },
 
   logout: () => {
+    $api.post('/logout')
     set(state => ({
       ...state,
       user: undefined

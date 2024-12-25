@@ -13,3 +13,12 @@
 .bg.no-nav::after {
     height: 168px;
 }
+
+div[role="status"] {
+    gap: 12px;
+    margin: 0;
+    justify-content: start;
+    font-size: 14px;
+    line-height: 22.4px;
+    font-weight: 600;
+}

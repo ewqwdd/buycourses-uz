@@ -1,8 +1,10 @@
-import { Auth } from "../pages/Auth";
 import { AuthConfirm } from "../pages/AuthConfirm";
 import { Category } from "../pages/Category";
+import { EmailConfirm } from "../pages/EmailConfirm";
 import { Home } from "../pages/Home";
 import { Item } from "../pages/Item";
+import { Login } from "../pages/Login";
+import { Register } from "../pages/Register";
 import { TopUp } from "../pages/TopUp";
 import { Warehouse } from "../pages/Warehouse";
 import { WarehouseWithdraw } from "../pages/WarehouseWithdraw";
@@ -20,11 +22,17 @@ export const routerConfig = {
     component: <TopUp />,
     requireAuth: true,
   },
-  '/auth': {
-    component: <Auth />
+  '/login': {
+    component: <Login />
+  },
+  '/register': {
+    component: <Register />
   },
   '/auth-confirm': {
     component: <AuthConfirm />
+  },
+  '/email-confirm': {
+    component: <EmailConfirm />
   },
   '/warehouse/withdraw': {
     component: <WarehouseWithdraw />,
@@ -41,4 +49,4 @@ export const routerConfig = {
   }
 };
 
-export const noNavPages = ['/auth', '/auth-confirm'];
+export const noNavPages = ['/login', '/auth-confirm', '/register'];

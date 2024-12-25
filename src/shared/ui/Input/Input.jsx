@@ -1,10 +1,12 @@
+import { forwardRef } from 'react'
 import { cva } from '../../lib/cva'
 import PropTypes from 'prop-types'
 
-export default function Input({ className, right, ...props }) {
+function Input({ className, right, ...props }, ref) {
   return (
     <div className="relative">
       <input
+        ref={ref}
         className={cva(
           'bg-overlay rounded-xl placeholder:text-teritary font-medium text-base min-h-[42px] px-4 w-full border border-transparent transition-all ring-0 ring-accent/20 outline-none',
           'focus:border-accent focus:ring-[3px] focus:outline-none',
@@ -24,3 +26,5 @@ Input.propTypes = {
   className: PropTypes.string,
   right: PropTypes.node,
 }
+
+export default forwardRef(Input)

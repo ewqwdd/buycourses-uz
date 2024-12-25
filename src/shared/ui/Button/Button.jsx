@@ -17,7 +17,7 @@ export default function Button({ className, as, variant = 'primary', size = 'md'
   return (
     <Cmp
       className={cva(
-        'flex gap-2 items-center justify-center text-sm font-semibold',
+        'flex gap-2 items-center justify-center text-sm font-semibold disabled:opacity-50',
         sizes[size],
         variants[variant],
         className
