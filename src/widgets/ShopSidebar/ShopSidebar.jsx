@@ -5,10 +5,11 @@ import { Button } from '../../shared/ui/Button'
 import RightUp from '../../shared/icons/RIghtUp.svg'
 import { memo } from 'react'
 import { Link } from 'react-router-dom'
+import { AsideWrapper } from '../AsideWrapper'
 
 export default memo(function ShopSidebar() {
   return (
-    <aside className="flex flex-col gap-10 w-full flex-1 max-w-[328px] sticky top-32 self-start" key={'shop-sidebar-wrapper'}>
+    <AsideWrapper key={'shop-sidebar-wrapper'}>
       <ShopSidebarSwitcher key={'shop-sidebar-switcher'} />
       <div className="flex flex-col gap-4">
         <Card className="gap-4 items-center min-h-[266px] px-16">
@@ -25,7 +26,7 @@ export default memo(function ShopSidebar() {
             <RightUp className="size-4" />
         </Button>
       </div>
-    </aside>
+    </AsideWrapper>
   )
 }
 )

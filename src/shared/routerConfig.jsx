@@ -1,9 +1,11 @@
 import { AuthConfirm } from "../pages/AuthConfirm";
 import { Category } from "../pages/Category";
+import { Create } from "../pages/Create";
 import { EmailConfirm } from "../pages/EmailConfirm";
 import { Home } from "../pages/Home";
 import { Item } from "../pages/Item";
 import { Login } from "../pages/Login";
+import { MyOffers } from "../pages/MyOffers";
 import { Register } from "../pages/Register";
 import { TopUp } from "../pages/TopUp";
 import { Warehouse } from "../pages/Warehouse";
@@ -33,6 +35,12 @@ export const routerConfig = {
   },
   '/email-confirm': {
     component: <EmailConfirm />
+  },
+  '/my-offers': {
+    component: <MyOffers />
+  },
+  '/create': {
+    component: <Create />
   },
   '/warehouse/withdraw': {
     component: <WarehouseWithdraw />,

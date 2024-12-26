@@ -9,7 +9,7 @@ export default function BottomNavItem({ icon, label, to, active }) {
       className={({ isActive }) =>
         cva('flex gap-2 text-secondary font-semibold text-sm [&_svg]:size-4 [&_svg]:hidden items-center', {
           '[&_svg]:block [&_svg]:text-primary  text-primary':
-            typeof active === 'boolean' ? isActive && active : isActive,
+            typeof active === 'boolean' ? active : isActive,
         })
       }
     >
