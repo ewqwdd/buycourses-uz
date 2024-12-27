@@ -9,6 +9,8 @@ import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import $api from '../../lib/$api'
 import useUserStore from '../../shared/store/useUserStore'
+import { AxiosError } from 'axios'
+import { emailRegex } from '../../shared/lib/regex'
 
 export default function Login() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -27,6 +29,11 @@ export default function Login() {
       return
     }
 
+    if (emailRegex.test(email) === false) {
+      toast.error('Некорректный email')
+      return
+    }
+
     setIsLoading(true)
     $api
       .post('/login', {
@@ -39,6 +46,10 @@ export default function Login() {
       })
       .catch((e) => {
         console.error(e)
+        if (e instanceof AxiosError) {
+          toast.error(e.response?.data?.message || 'Ошибка Авторизации')
+          return
+        }
         toast.error('Ошибка Авторизации')
       })
       .finally(() => {

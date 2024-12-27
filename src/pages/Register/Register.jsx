@@ -10,6 +10,8 @@ import { useRef, useState } from 'react'
 import $api from '../../lib/$api'
 import toast from 'react-hot-toast'
 import useUserStore from '../../shared/store/useUserStore'
+import { AxiosError } from 'axios'
+import { emailRegex } from '../../shared/lib/regex'
 
 export default function Register() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -26,6 +28,16 @@ export default function Register() {
 
     if (!email || !password || !passwordConfirm) {
       toast.error('Заполните все поля')
+      return
+    }
+
+    if (emailRegex.test(email) === false) {
+      toast.error('Некорректный email')
+      return
+    }
+
+    if (password.length < 8) {
+      toast.error('Пароль должен быть не менее 8 символов')
       return
     }
 
@@ -47,6 +59,10 @@ export default function Register() {
       })
       .catch((e) => {
         console.error(e)
+        if (e instanceof AxiosError) {
+          toast.error(e.response?.data?.message || 'Ошибка регистрации')
+          return
+        }
         toast.error('Ошибка регистрации')
       })
       .finally(() => {

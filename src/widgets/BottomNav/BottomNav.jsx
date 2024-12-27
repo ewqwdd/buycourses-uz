@@ -10,6 +10,8 @@ export default function BottomNav() {
         <Route path="/:slug/:item" element={<MainNav />} />
         <Route path="/create" element={<MainNav />} />
         <Route path="/warehouse/*" element={<WarehouseNav />} />
+        <Route path="/top-up" element={null} />
+        <Route path="/help" element={null} />
     </Routes>
   )
 }
