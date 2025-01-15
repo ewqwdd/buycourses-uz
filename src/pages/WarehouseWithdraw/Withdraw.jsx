@@ -8,6 +8,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import $api from '../../shared/lib/$api'
 import { digitRegex } from '../../shared/lib/regex'
 import toast from 'react-hot-toast'
+import { AxiosError } from 'axios'
 
 export default function Withdraw({ sum, setSum }) {
   const cardRef = useRef()
@@ -24,6 +25,10 @@ export default function Withdraw({ sum, setSum }) {
         })
         .catch((err) => {
           console.error(err)
+          if (err instanceof AxiosError) {
+            toast.error(err.response?.data?.message)
+            return
+          }
           toast.error('Ошибка при выводе средств')
         })
         .finally(() => {

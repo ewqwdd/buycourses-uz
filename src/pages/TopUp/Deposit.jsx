@@ -5,6 +5,7 @@ import { Card } from '../../shared/ui/Card'
 import toast from 'react-hot-toast'
 import useUserStore from '../../shared/store/useUserStore'
 import { cva } from '../../shared/lib/cva'
+import { AxiosError } from 'axios'
 
 export default function Deposit({ sum, setSum }) {
   const [loading, setLoading] = useState(false)
@@ -21,12 +22,16 @@ export default function Deposit({ sum, setSum }) {
         addTransaction({
           amount: parseFloat(sum),
           createdAt: new Date().toISOString(),
-          type: 'deposit'
+          type: 'deposit',
         })
         setSum(null)
       })
       .catch((err) => {
         console.error(err)
+        if (err instanceof AxiosError) {
+          toast.error(err.response?.data?.message || 'Ошибка пополнения')
+          return
+        }
         toast.error('Ошибка поплнения')
       })
       .finally(() => {
