@@ -2,122 +2,24 @@ import { Link } from 'react-router-dom'
 import DefaultHeader from '../../widgets/DefaultHeader/DefaultHeader'
 import { Main } from '../../widgets/Main'
 import { ShopSidebar } from '../../widgets/ShopSidebar'
-import Product from '../../widgets/Product/Product'
-
-const items = [
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-  {
-    name: 'Воронка продаж 4.0 (Продвинутая версия)',
-    category: 'Программы и скрипты',
-    slug: 'apps-scripts',
-  },
-]
+import { Category, CategorySkeleton } from '../../widgets/Category'
+import { useCategories } from '../../shared/hooks/useCategories'
+import { ListWrapper } from '../../shared/ui/ListWrapper'
 
 export default function Home() {
+  const { data, isLoading } = useCategories()
+
   return (
     <Main>
       <DefaultHeader title={'Магазин'} subTitle={'2 товара'} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
-        <div className="grid grid-cols-2 flex-1 gap-3">
-          {items.map((item, index) => (
-            <Product as={Link} to={`/${item.slug}`} key={index} {...item} />
+        <ListWrapper>
+          {isLoading && new Array(6).fill().map((_, i) => <CategorySkeleton key={i} />)}
+          {data.map((item) => (
+            <Category as={Link} to={`/${item.slug}`} key={item.id} {...item} />
           ))}
-        </div>
+        </ListWrapper>
       </div>
     </Main>
   )

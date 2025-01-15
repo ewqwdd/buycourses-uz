@@ -11,6 +11,9 @@ export default memo(function ShopSidebarSwitcher() {
 
   useEffect(() => {
     if (isWarehouse) {
+      if (pathname.includes('/product')) {
+        sessionStorage.setItem('warehouse', '/warehouse')
+      }
       sessionStorage.setItem('warehouse', pathname)
     } else {
       sessionStorage.setItem('home', pathname)

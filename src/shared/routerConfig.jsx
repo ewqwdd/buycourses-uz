@@ -37,10 +37,12 @@ export const routerConfig = {
     component: <EmailConfirm />
   },
   '/my-offers': {
-    component: <MyOffers />
+    component: <MyOffers />,
+    requireAuth: true,
   },
   '/create': {
-    component: <Create />
+    component: <Create />,
+    requireAuth: true,
   },
   '/warehouse/withdraw': {
     component: <WarehouseWithdraw />,

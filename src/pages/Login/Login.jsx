@@ -7,10 +7,11 @@ import Right from '../../shared/icons/RIght.svg'
 import { Title } from '../../shared/ui/Title'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
-import $api from '../../lib/$api'
+import $api from '../../shared/lib/$api'
 import useUserStore from '../../shared/store/useUserStore'
 import { AxiosError } from 'axios'
 import { emailRegex } from '../../shared/lib/regex'
+import { useNavigate } from 'react-router'
 
 export default function Login() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -19,6 +20,7 @@ export default function Login() {
   const passwordRef = useRef()
   const [isLoading, setIsLoading] = useState(false)
   const setUser = useUserStore(state => state.setUser)
+  const navigate = useNavigate()
 
   const login = () => {
     const password = passwordRef.current.value
@@ -43,6 +45,7 @@ export default function Login() {
       .then(async () => {
           const { data } = await $api.get('/me')
           setUser(data)
+          navigate('/')
       })
       .catch((e) => {
         console.error(e)

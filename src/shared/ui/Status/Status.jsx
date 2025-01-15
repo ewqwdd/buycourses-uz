@@ -7,14 +7,14 @@ import PropTypes from 'prop-types'
 export default function Status({ status }) {
   const base = 'rounded-lg min-h-6 px-2 flex gap-2 items-center [&_svg]:size-4'
   switch (status) {
-    case 'decline':
+    case 'declined':
       return (
         <div className={cva(base, 'bg-error/20 text-error [&_svg]:text-error')}>
           <Closed />
           Отклонено
         </div>
       )
-    case 'success':
+    case 'completed':
       return (
         <div className={cva(base, 'bg-success/20 text-success [&_svg]:text-success')}>
           <CheckMark />
@@ -25,7 +25,7 @@ export default function Status({ status }) {
       return (
         <div className={cva(base, 'bg-secondary/20 text-secondary [&_svg]:text-secondary')}>
           <History />
-          Выплачено
+          В ожидании
         </div>
       )
     default:

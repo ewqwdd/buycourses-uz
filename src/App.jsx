@@ -4,20 +4,13 @@ import AppRouter from './AppRouter'
 import Nav from './widgets/Nav/Nav'
 import useUserStore from './shared/store/useUserStore'
 import { useNavigate } from 'react-router'
-import $api from './lib/$api'
 import { Toaster } from 'react-hot-toast'
+import $api from './shared/lib/$api'
 
 function App() {
   const setMounted = useUserStore((state) => state.setMounted)
   const user = useUserStore((state) => state.user)
   const setUser = useUserStore((state) => state.setUser)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (user) {
-      navigate('/warehouse')
-    }
-  }, [user])
 
   useEffect(() => {
     $api

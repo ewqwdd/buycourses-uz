@@ -7,11 +7,12 @@ import Right from '../../shared/icons/RIght.svg'
 import QuestionMark from '../../shared/icons/Questionmark.svg'
 import { Title } from '../../shared/ui/Title'
 import { useRef, useState } from 'react'
-import $api from '../../lib/$api'
+import $api from '../../shared/lib/$api'
 import toast from 'react-hot-toast'
 import useUserStore from '../../shared/store/useUserStore'
 import { AxiosError } from 'axios'
 import { emailRegex } from '../../shared/lib/regex'
+import { useNavigate } from 'react-router'
 
 export default function Register() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -20,6 +21,7 @@ export default function Register() {
   const passwordConfirmRef = useRef()
   const [isLoading, setIsLoading] = useState(false)
   const setUser = useUserStore((state) => state.setUser)
+  const navigate = useNavigate()
 
   const register = () => {
     const password = passwordRef.current.value
@@ -56,6 +58,7 @@ export default function Register() {
       .then(async () => {
         const { data } = await $api.get('/me')
         setUser(data)
+        navigate('/')
       })
       .catch((e) => {
         console.error(e)

@@ -13,9 +13,6 @@ export default function TextArea({ className, ...props }) {
   )
 }
 
-TextArea.defaultProps = {
-  className: '',
-}
 
 TextArea.propTypes = {
   className: PropTypes.string,

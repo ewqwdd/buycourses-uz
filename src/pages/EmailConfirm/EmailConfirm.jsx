@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import $api from '../../lib/$api'
+import $api from '../../shared/lib/$api'
 import useUserStore from '../../shared/store/useUserStore'
 
 export default function EmailConfirm() {

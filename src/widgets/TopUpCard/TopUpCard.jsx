@@ -4,19 +4,29 @@ import Right from '../../shared/icons/RIght.svg'
 import { Input } from '../../shared/ui/Input'
 import { Button } from '../../shared/ui/Button'
 import PropTypes from 'prop-types'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import toast from 'react-hot-toast'
 
 const _subTitle = 'После пополнения вы сможете купить что-либо в нашем магазине'
 const _afterInput = 'Visa, Mastercard, МИР'
+const _paceholder = 'Сумма для пополнения'
+const _buttonText = 'Оплатить картой'
 
-export default function TopUpCard({ subTitle = _subTitle, afterInput = _afterInput, setSum }) {
+export default function TopUpCard({
+  subTitle = _subTitle,
+  afterInput = _afterInput,
+  placeholder = _paceholder,
+  buttonText = _buttonText,
+  setSum,
+  renderAfterInput,
+}) {
   const inputRef = useRef()
+  const afterInputRef = useRef()
 
   const onKeyDown = (e) => {
     const allowedKeys = ['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete', 'Tab']
 
-    if (!/[0-9]/.test(e.key) && !allowedKeys.includes(e.key)) {
+    if (!/[0-9]/.test(e.key) && !allowedKeys.includes(e.key) && !e.ctrlKey) {
       e.preventDefault()
     }
   }
@@ -26,8 +36,16 @@ export default function TopUpCard({ subTitle = _subTitle, afterInput = _afterInp
     if (!sum) {
       return toast.error('Введите сумму')
     }
-    setSum(sum)
+    setSum?.(sum)
   }
+
+  const onChange = (e) => {
+    renderAfterInput?.(e.target.value, afterInputRef.current)
+  }
+
+  useEffect(() => {
+    renderAfterInput?.(inputRef.current.value, afterInputRef.current)
+  }, [])
 
   return (
     <Card className="gap-4 items-center min-h-[422px] justify-center">
@@ -40,13 +58,14 @@ export default function TopUpCard({ subTitle = _subTitle, afterInput = _afterInp
         <Input
           onKeyDown={onKeyDown}
           ref={inputRef}
-          placeholder="Сумма для пополнения"
+          placeholder={placeholder}
           right={<span className="text-overlayForeground font-medium text-base">РУБ</span>}
+          onChange={onChange}
         />
-        <span className="text-sm text-overlayForeground font-medium">{afterInput}</span>
+        <span className="text-sm text-overlayForeground font-medium" ref={afterInputRef}>{afterInput}</span>
       </div>
       <Button className="self-stretch" onClick={onSubmit}>
-        Оплатить картой
+        {buttonText}
         <Right className="size-4" />
       </Button>
     </Card>

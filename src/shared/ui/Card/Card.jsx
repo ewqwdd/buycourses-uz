@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import { cva } from '../../lib/cva'
 import PropTypes from 'prop-types'
 
-export default function Card({ children, className, ...props }) {
+function Card({ children, className, ...props }) {
   return (
     <div className={cva('bg-background rounded-xl p-8 border border-foreground1 flex flex-col', className)} {...props}>
       {children}
@@ -14,3 +15,5 @@ Card.propTypes = {
   className: PropTypes.string,
   props: PropTypes.object,
 }
+
+export default memo(Card)

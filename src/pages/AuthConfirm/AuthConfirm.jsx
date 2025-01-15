@@ -4,7 +4,7 @@ import { MainNoNav } from "../../widgets/MainNoNav";
 import Refresh from '../../shared/icons/Refresh.svg'
 import { Title } from "../../shared/ui/Title";
 import { useSearchParams } from "react-router-dom";
-import $api from "../../lib/$api";
+import $api from "../../shared/lib/$api";
 import { useEffect, useRef, useState } from "react";
 
 export default function AuthConfirm() {
