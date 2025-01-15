@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '../../shared/ui/Button'
-import Right from '../../shared/icons/Right.svg'
+import Right from '../../shared/icons/RIght.svg'
 import useUserStore from '../../shared/store/useUserStore'
 import { Material } from '../../widgets/Material'
 import $api from '../../shared/lib/$api'
