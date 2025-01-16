@@ -6,6 +6,7 @@ import useUserStore from './shared/store/useUserStore'
 import { useNavigate } from 'react-router'
 import { Toaster } from 'react-hot-toast'
 import $api from './shared/lib/$api'
+import { Footer } from './widgets/Footer'
 
 function App() {
   const setMounted = useUserStore((state) => state.setMounted)
@@ -27,6 +28,7 @@ function App() {
     <>
       <Nav />
       <AppRouter />
+      <Footer />
       <Toaster
         position="bottom-right"
         containerClassName="!z-10 mb-10 mr-10"

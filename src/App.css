@@ -22,3 +22,9 @@ div[role="status"] {
     line-height: 22.4px;
     font-weight: 600;
 }
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}

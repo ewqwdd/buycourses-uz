@@ -11,6 +11,13 @@ import { TopUp } from "../pages/TopUp";
 import { Warehouse } from "../pages/Warehouse";
 import { WarehouseWithdraw } from "../pages/WarehouseWithdraw";
 import { Support } from "../widgets/Support";
+import Agreement from "./documents/Agreement";
+import LicenseAgreement from "./documents/LicenseAgreement";
+import PrivacyPolicy from "./documents/PrivacyPolicy";
+import Rules from "./documents/Rules";
+
+export const documentPages = ['/agreement', '/license-agreement', '/privacy-policy', '/rules'];
+export const documentTitles = ['Пользовательское соглашение', 'Лицензионное соглашение', 'Политика конфиденциальности', 'Правила сервиса'];
 
 export const routerConfig = {
   '': {
@@ -56,6 +63,18 @@ export const routerConfig = {
   },
   '/help': {
     component: <Support />
+  },
+  '/agreement': {
+    component: <Agreement />
+  },
+  '/license-agreement': {
+    component: <LicenseAgreement />
+  },
+  '/privacy-policy': {
+    component: <PrivacyPolicy />
+  },
+  '/rules': {
+    component: <Rules />
   }
 };
 

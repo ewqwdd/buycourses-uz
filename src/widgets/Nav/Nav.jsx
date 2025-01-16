@@ -5,7 +5,7 @@ import Home from '../../shared/icons/Add.svg'
 import Help from '../../shared/icons/Add.svg'
 import NavButton from './NavButton'
 import { BottomNav } from '../BottomNav'
-import { noNavPages } from '../../shared/routerConfig'
+import { documentPages, noNavPages } from '../../shared/routerConfig'
 import useUserStore from '../../shared/store/useUserStore'
 import NavLogin from './NavLogin'
 import NavDetails from './NavDetails'
@@ -42,6 +42,8 @@ export default memo(function Nav() {
 
   const navRight = user ? <NavDetails user={user} /> : <NavLogin />
 
+  const isDocument = documentPages.find(e => e === pathname)
+
   return (
     <nav className="flex flex-col items-center pt-4 px-10">
       <div className="flex justify-between relative max-w-8xl w-full min-h-[42px] items-center border-b border-b-overlay pb-4">
@@ -56,7 +58,7 @@ export default memo(function Nav() {
           }}
         >
           {links.map((elem, index) => (
-            <NavButton active={active.id === elem.id} key={index} {...elem} />
+            <NavButton active={!isDocument && active.id === elem.id} key={index} {...elem} />
           ))}
         </div>
           {isMounted ? navRight: <div className='flex-1' />}
