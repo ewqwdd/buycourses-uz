@@ -9,6 +9,7 @@ import { floatRegex } from '../../shared/lib/regex'
 import CategoryPicker from '../CategoryPicker/CategoryPicker'
 import ImageUp from '../../shared/icons/ImageUp.svg'
 import { cva } from '../../shared/lib/cva'
+import toast from 'react-hot-toast'
 
 export default function ProductForm({
   content: content_,
