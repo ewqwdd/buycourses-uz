@@ -59,7 +59,7 @@ export default function TopUpCard({
           onKeyDown={onKeyDown}
           ref={inputRef}
           placeholder={placeholder}
-          right={<span className="text-overlayForeground font-medium text-base">РУБ</span>}
+          right={<span className="text-overlayForeground font-medium text-base">СУМ</span>}
           onChange={onChange}
         />
         <span className="text-sm text-overlayForeground font-medium" ref={afterInputRef}>{afterInput}</span>

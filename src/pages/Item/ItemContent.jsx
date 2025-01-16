@@ -58,7 +58,7 @@ export default function ItemContent({ data }) {
       )}
       {!purchasedIem && !userItem && (
         <>
-          <span className="text-base mt-3 text-primary font-semibold">{data.price} руб.</span>
+          <span className="text-base mt-3 text-primary font-semibold">{data.price} сум</span>
           <Button className="min-w-[328px] mt-1" onClick={buyItem}>
             Купить <Right className="size-4" />
           </Button>

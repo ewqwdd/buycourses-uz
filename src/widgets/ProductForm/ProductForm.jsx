@@ -7,6 +7,8 @@ import Pencil from '../../shared/icons/Pencil.svg'
 import { MaterialForm } from '../MaterialForm'
 import { floatRegex } from '../../shared/lib/regex'
 import CategoryPicker from '../CategoryPicker/CategoryPicker'
+import ImageUp from '../../shared/icons/ImageUp.svg'
+import { cva } from '../../shared/lib/cva'
 
 export default function ProductForm({
   content: content_,
@@ -25,6 +27,8 @@ export default function ProductForm({
   const [edit, setEdit] = useState()
   const [categoryId, setCategoryId] = useState(categoryId_)
   const [customCategory, setCustomCategory] = useState('')
+  const [image, setImage] = useState()
+  const [preview, setPreview] = useState()
 
   const changeName = useCallback((e) => {
     setName(e.target.value)
@@ -75,6 +79,29 @@ export default function ProductForm({
     !categoryId ||
     (categoryId?.value === -1 && customCategory.length < 4)
 
+  const imageChange = (e) => {
+    const file = e.target.files[0]
+
+    if (!['image/jpeg', 'image/png'].includes(file.type)) {
+      toast.error('Вы можете загружать только JPG/PNG файлы.')
+      e.preventDefault()
+      return
+    }
+
+    if (file.size / 1024 / 1024 >= 2) {
+      toast.error('Размер изображения должен быть меньше 2MB.')
+      e.preventDefault()
+      return
+    }
+
+    setImage(file)
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      setPreview(reader.result) // Устанавливаем Base64 строку
+    }
+    reader.readAsDataURL(file) // Читаем файл как Base64
+  }
+
   return (
     <>
       <div className="grid gap-4" style={{ gridTemplateColumns: '1fr auto' }}>
@@ -112,15 +139,34 @@ export default function ProductForm({
           ))}
         </div>
       )}
-      <MaterialForm
-        name={title}
-        setName={setTitle}
-        url={url}
-        setUrl={setUrl}
-        onSubmit={isEdditing ? onSubmitMaterialEdit : onSubmitMaterial}
-        onDelete={isEdditing ? onDelete : null}
-        isEdditing={isEdditing}
-      />
+      <div className="flex justify-between">
+        <MaterialForm
+          name={title}
+          setName={setTitle}
+          url={url}
+          setUrl={setUrl}
+          onSubmit={isEdditing ? onSubmitMaterialEdit : onSubmitMaterial}
+          onDelete={isEdditing ? onDelete : null}
+          isEdditing={isEdditing}
+        />
+        <div className="cursor-pointer size-32 relative rounded-lg overflow-hidden bg-accentSecondary flex items-center justify-center">
+          <input
+            type="file"
+            onChange={imageChange}
+            accept="image/*"
+            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+          />
+          <ImageUp
+            className={cva(
+              'size-12 text-primary absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all',
+              {
+                'opacity-50': !!preview,
+              }
+            )}
+          />
+          {preview && <img src={preview} alt="preview" className="object-cover w-full h-full pointer-events-none" />}
+        </div>
+      </div>
       <div className="flex gap-2 self-end text-lg text-secondary relative items-center">
         <TextArea
           rows={1}
@@ -134,7 +180,9 @@ export default function ProductForm({
       <Button
         className="min-w-[328px] self-end"
         disabled={isDisabled}
-        onClick={() => onSubmit({ name, content, materials, price, categoryId: categoryId?.value, customCategory })}
+        onClick={() =>
+          onSubmit({ name, content, materials, price, categoryId: categoryId?.value, customCategory, image })
+        }
       >
         Сохранить
       </Button>

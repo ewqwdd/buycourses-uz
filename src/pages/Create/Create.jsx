@@ -40,9 +40,22 @@ export default function Create() {
       }
     },
     mutationFn: (values) => {
+      const formData = new FormData()
+      for (const key in values) {
+        if (key === 'materials') {
+          const material = JSON.stringify(values[key])
+          formData.append('materials[]', material)
+        } else {
+          formData.append(key, values[key])
+        }
+      }
       setIsLoading(true)
       return $api
-        .post('/products', values)
+        .post('/products', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          }
+        })
         .then((data) => {
           addProduct({ ...values, id: data.data.id })
           navigate('/')
