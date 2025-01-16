@@ -13,7 +13,7 @@ export default memo(function WarehouseSidebar({ setSum }) {
       <ShopSidebarSwitcher key={'shop-sidebar-switcher'} />
       <TopUpCard
         subTitle="Вывод произойдёт в течение 24х часов"
-        afterInput={`Будет выведено 0,00 рублей`}
+        afterInput={`Будет выведено 0,00 ${formatCurrency(0)}`}
         placeholder="Сумма для вывода"
         buttonText="Вывести"
         setSum={setSum}

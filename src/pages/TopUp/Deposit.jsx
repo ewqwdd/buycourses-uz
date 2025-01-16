@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import useUserStore from '../../shared/store/useUserStore'
 import { cva } from '../../shared/lib/cva'
 import { AxiosError } from 'axios'
+import { formatCurrency } from '../../shared/lib/formatCurrecny'
 
 export default function Deposit({ sum, setSum }) {
   const [loading, setLoading] = useState(false)
@@ -47,7 +48,7 @@ export default function Deposit({ sum, setSum }) {
         })}
       >
         <p className="text-teritary text-base font-semibold text-center">
-          Переведите {sum} рублей на карту {import.meta.env.VITE_CARD_NUMBER} <br />и нажмите накнопку “Я оплатил”
+          Переведите {sum} {formatCurrency(sum)} на карту {import.meta.env.VITE_CARD_NUMBER} <br />и нажмите накнопку “Я оплатил”
         </p>
         <Button size="sm" onClick={onSubmit}>
           Я оплатил
