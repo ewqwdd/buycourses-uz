@@ -3,7 +3,7 @@ import { cva } from '../../shared/lib/cva'
 
 export default function Product({ name, category, image, className, as, ...props }) {
   const Cmp = as || 'div'
-  const picStyles = 'rounded-t-lg rounded-b-[4px] bg-foreground1 h-48 w-full'
+  const picStyles = 'rounded-t-lg rounded-b-[4px] bg-foreground1 h-48 w-full object-cover'
   return (
     <Cmp
       className={cva('rounded-xl bg-background p-1 border border-foreground1 flex flex-col gap-3', className)}
