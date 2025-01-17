@@ -18,7 +18,7 @@ export default memo(function WarehouseSidebar({ setSum }) {
         buttonText="Вывести"
         setSum={setSum}
         renderAfterInput={(value, ref) => {
-          ref.textContent = `Будет выведено ${formatPrice(parseFloat(value || 0)).slice(0, -2)} ${formatCurrency(parseFloat(value))}`
+          ref.textContent = `Будет выведено ${formatPrice(parseFloat(value || 0))}`
         }}
       />
     </aside>

@@ -13,5 +13,5 @@ export function formatCurrency(amount) {
   //   word = 'сум';
   // }
 
-  return 'сум';
+  return 'UZS';
 }

@@ -36,7 +36,7 @@ export default function ProductForm({
   }, [])
 
   const changePrice = useCallback((e) => {
-    if (floatRegex.test(e.target.value) && e.target.value.length < 14) {
+    if (floatRegex.test(e.target.value) && e.target.value.length < 13) {
       setPrice(e.target.value)
     }
   }, [])
@@ -174,9 +174,9 @@ export default function ProductForm({
           placeholder="0.00"
           value={price}
           onChange={changePrice}
-          className="max-w-40 text-lg resize-none overflow-hidden text-end pr-4"
+          className="max-w-40 text-lg resize-none overflow-hidden text-end pr-10"
         />
-        <span className="absolute right-0 pointer-events-none">₽</span>
+        <span className="absolute right-0 pointer-events-none">UZS</span>
       </div>
       <Button
         className="min-w-[328px] self-end"

@@ -23,7 +23,7 @@ export default function TopUp() {
       <Back />
     </button>
   )
-  const balanceText = `Баланс ${formatPrice(balance).slice(0, -2)} ${formatCurrency(balance)}`
+  const balanceText = `Баланс ${formatPrice(balance)}`
 
   const defaultContent = (
     <>
