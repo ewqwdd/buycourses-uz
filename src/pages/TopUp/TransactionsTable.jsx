@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import { formatPrice } from '../../shared/lib/formatPrice'
-import useUserStore from '../../shared/store/useUserStore'
 import { cva } from '../../shared/lib/cva'
 
 export default function TransactionsTable({ transactions }) {

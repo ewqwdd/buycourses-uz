@@ -10,6 +10,8 @@ import CategoryPicker from '../CategoryPicker/CategoryPicker'
 import ImageUp from '../../shared/icons/ImageUp.svg'
 import { cva } from '../../shared/lib/cva'
 import toast from 'react-hot-toast'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css';
 
 export default function ProductForm({
   content: content_,
@@ -126,6 +128,7 @@ export default function ProductForm({
           className="max-w-xl min-h-10 [&_p]:text-teritary"
           placeholder="Введите текст"
         />
+        <ReactQuill className="max-w-xl min-h-10 [&_p]:text-teritary" value={content} onChange={setContent} />
       </div>
 
       {materials.length > 0 && (

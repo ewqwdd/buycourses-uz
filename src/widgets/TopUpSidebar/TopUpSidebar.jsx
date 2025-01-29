@@ -3,10 +3,10 @@ import { TopUpCard } from "../TopUpCard"
 import { AsideWrapper } from "../AsideWrapper"
 import propTypes from 'prop-types'
 
-function TopUpSidebar({ setSum }) {
+function TopUpSidebar({ onSubmit }) {
   return (
     <AsideWrapper key={'shop-sidebar-wrapper'}>
-      <TopUpCard setSum={setSum} />
+      <TopUpCard onSubmit={onSubmit} />
     </AsideWrapper>
   )
 }

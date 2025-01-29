@@ -1,5 +1,6 @@
 import { AuthConfirm } from "../pages/AuthConfirm";
 import { Category } from "../pages/Category";
+import { Confirmation } from "../pages/Confirmation";
 import { Create } from "../pages/Create";
 import { EmailConfirm } from "../pages/EmailConfirm";
 import { Home } from "../pages/Home";
@@ -75,6 +76,9 @@ export const routerConfig = {
   },
   '/rules': {
     component: <Rules />
+  },
+  '/deposit/confirmation': {
+    component: <Confirmation />
   }
 };
 

@@ -8,39 +8,58 @@ import DefaultHeader from '../../widgets/DefaultHeader/DefaultHeader'
 import { Main } from '../../widgets/Main'
 import { TopUpSidebar } from '../../widgets/TopUpSidebar'
 import Back from '../../shared/ui/Back/Back'
-import { Button } from '../../shared/ui/Button'
 import TransactionsTable from './TransactionsTable'
-import Deposit from './Deposit'
+import { cva } from '../../shared/lib/cva'
+import toast from 'react-hot-toast'
+import $api from '../../shared/lib/$api'
 
 export default function TopUp() {
   const balance = useUserStore((state) => state.user?.balance) ?? 0
-  const [sum, setSum] = useState(0)
-  const transactions = useUserStore(state => state.transactions) ?? []
-  const filtered = useMemo(() => transactions.filter(e => e.type === 'deposit'))
+  const transactions = useUserStore((state) => state.transactions) ?? []
+  const filtered = useMemo(() => transactions.filter((e) => e.type === 'deposit' && e.status === 'success'), [transactions])
 
-  const backButton = (
-    <button onClick={() => setSum(0)}>
-      <Back />
-    </button>
-  )
+  const [loading, setLoading] = useState(false)
+
   const balanceText = `Баланс ${formatPrice(balance)}`
 
-  const defaultContent = (
-    <>
-      <TopUpSidebar setSum={setSum} />
-      <Card className="flex-1 p-0 relative">
-        {filtered.length > 0 ? <TransactionsTable transactions={filtered} /> : <h2 className="text-base font-semibold text-teritary absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">История пополнений пуста</h2>}
-      </Card>
-    </>
-  )
-
-  const topUpContent = <Deposit sum={sum} setSum={setSum} />
+  const onSubmit = (sum) => {
+    setLoading(true)
+    $api
+      .post('/deposit', { amount: parseFloat(sum) })
+      .then(({ data }) => {
+        window.location.href = data.url
+      })
+      .catch((err) => {
+        console.error(err)
+        setLoading(false)
+        if (err instanceof AxiosError) {
+          toast.error(err.response?.data?.message || 'Ошибка пополнения')
+          return
+        }
+        toast.error('Ошибка поплнения')
+      })
+  }
 
   return (
     <Main>
       <Title title="Пополнение баланса" />
-      <DefaultHeader title={'Пополнение баланса'} subTitle={sum > 0 ? backButton : balanceText} />
-      <div className="flex gap-20 mt-10">{sum > 0 ? topUpContent :  defaultContent}</div>
+      <DefaultHeader title={'Пополнение баланса'} subTitle={balanceText} />
+      <div
+        className={cva('flex gap-20 mt-10', {
+          'animate-pulse pointer-events-none': loading,
+        })}
+      >
+        <TopUpSidebar onSubmit={onSubmit} />
+        <Card className={cva('flex-1 p-0 relative')}>
+          {filtered.length > 0 ? (
+            <TransactionsTable transactions={filtered} />
+          ) : (
+            <h2 className="text-base font-semibold text-teritary absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              История пополнений пуста
+            </h2>
+          )}
+        </Card>
+      </div>
     </Main>
   )
 }

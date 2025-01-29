@@ -19,6 +19,7 @@ export default function TopUpCard({
   buttonText = _buttonText,
   setSum,
   renderAfterInput,
+  onSubmit: _onSubmit,
 }) {
   const inputRef = useRef()
   const afterInputRef = useRef()
@@ -33,6 +34,10 @@ export default function TopUpCard({
 
   const onSubmit = () => {
     const sum = inputRef.current.value
+    if (_onSubmit) {
+      _onSubmit(sum)
+      return
+    }
     if (!sum) {
       return toast.error('Введите сумму')
     }
@@ -62,7 +67,9 @@ export default function TopUpCard({
           right={<span className="text-overlayForeground font-medium text-base">UZS</span>}
           onChange={onChange}
         />
-        <span className="text-sm text-overlayForeground font-medium" ref={afterInputRef}>{afterInput}</span>
+        <span className="text-sm text-overlayForeground font-medium" ref={afterInputRef}>
+          {afterInput}
+        </span>
       </div>
       <Button className="self-stretch" onClick={onSubmit}>
         {buttonText}
