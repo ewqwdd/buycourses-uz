@@ -44,7 +44,7 @@ export default function Deposit({ sum, setSum }) {
     <Card className="min-h-[482px] items-center justify-center flex-1">
       <div
         className={cva('flex flex-col items-center gap-4', {
-          'animate-pulse': loading,
+          'animate-pulse pointer-events-none': loading,
         })}
       >
         <p className="text-teritary text-base font-semibold text-center">

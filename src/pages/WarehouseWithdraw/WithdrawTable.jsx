@@ -23,7 +23,7 @@ export default function WithdrawTable() {
   return (
     <Card
       className={cva('min-h-[482px] flex-1 relative', styles.table, {
-        'animate-pulse': isFetching,
+        'animate-pulse pointer-events-none': isFetching,
       })}
     >
       <Row heading values={['Дата', 'Номер карты', 'Статус', 'Сумма']} />

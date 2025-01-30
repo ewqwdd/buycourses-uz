@@ -28,3 +28,39 @@ div[role="status"] {
     flex-direction: column;
     min-height: 100dvh;
 }
+
+.redactor-styles {
+    color: hsla(var(--secondary), 1) !important;
+}
+
+.redactor-styles h1, .redactor-styles h2, .redactor-styles h3 {
+    color: hsla(var(--primary), 1) !important;
+}
+
+.redactor-styles h3 {
+    font-size: 16px !important;
+    line-height: 25.6px !important;
+}
+
+.redactor-styles h2 {
+    font-size: 18px !important;
+    line-height: 28.8px !important;    
+}
+
+.redactor-styles h1 {
+    font-size: 20px !important;
+    line-height: 32px !important;
+}
+
+.redactor-styles ul li {
+    list-style: disc !important;
+}
+
+.redactor-styles ol li {
+    list-style: decimal !important;
+}
+
+.redactor-styles a {
+    color: hsla(var(--accent), 1) !important;
+    text-decoration: none !important;
+}

@@ -1,5 +1,4 @@
 import { useMemo, useState } from 'react'
-import { formatCurrency } from '../../shared/lib/formatCurrecny'
 import { formatPrice } from '../../shared/lib/formatPrice'
 import useUserStore from '../../shared/store/useUserStore'
 import { Card } from '../../shared/ui/Card'
@@ -7,7 +6,6 @@ import { Title } from '../../shared/ui/Title'
 import DefaultHeader from '../../widgets/DefaultHeader/DefaultHeader'
 import { Main } from '../../widgets/Main'
 import { TopUpSidebar } from '../../widgets/TopUpSidebar'
-import Back from '../../shared/ui/Back/Back'
 import TransactionsTable from './TransactionsTable'
 import { cva } from '../../shared/lib/cva'
 import toast from 'react-hot-toast'
@@ -16,7 +14,7 @@ import $api from '../../shared/lib/$api'
 export default function TopUp() {
   const balance = useUserStore((state) => state.user?.balance) ?? 0
   const transactions = useUserStore((state) => state.transactions) ?? []
-  const filtered = useMemo(() => transactions.filter((e) => e.type === 'deposit' && e.status === 'success'), [transactions])
+  const filtered = useMemo(() => transactions.filter((e) => e.type === 'deposit' && e.status === 'completed'), [transactions])
 
   const [loading, setLoading] = useState(false)
 

@@ -46,7 +46,7 @@ export default function Confirmation() {
     <Main>
       <Card
         className={cva('flex flex-col items-center justify-center min-h-[482px] gap-3', {
-          'animate-pulse': isFetching || isLoading,
+          'animate-pulse pointer-events-none': isFetching || isLoading,
         })}
       >
         {!(isFetching || isLoading) && (

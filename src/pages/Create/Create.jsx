@@ -44,7 +44,7 @@ export default function Create() {
       for (const key in values) {
         if (key === 'materials') {
           const material = JSON.stringify(values[key])
-          formData.append('materials[]', material)
+          formData.append('materials', material)
         } else {
           formData.append(key, values[key])
         }
@@ -57,7 +57,7 @@ export default function Create() {
           }
         })
         .then((data) => {
-          addProduct({ ...values, id: data.data.id })
+          addProduct({ ...values, id: data.data.id, slug: data.data.slug })
           navigate('/')
         })
         .catch((err) => {
@@ -79,13 +79,13 @@ export default function Create() {
     <Main>
       <Title title="Создание объявления" />
       <DefaultHeader title={'Создание объявления'} subTitle={'0 товаров'} />
-      <div className="flex gap-20 mt-10">
+      <div className="flex gap-20 mt-10 relative z-[1]">
         <AsideWrapper className="gap-4">
           <CreationCard />
         </AsideWrapper>
         <Card
           className={cva('p-10 gap-5 flex-1 flex flex-col', {
-            'animate-pulse': isLoading,
+            'animate-pulse pointer-events-none': isLoading,
           })}
         >
           <ProductForm onSubmit={submit} />

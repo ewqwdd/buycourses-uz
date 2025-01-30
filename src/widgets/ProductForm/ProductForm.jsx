@@ -11,7 +11,7 @@ import ImageUp from '../../shared/icons/ImageUp.svg'
 import { cva } from '../../shared/lib/cva'
 import toast from 'react-hot-toast'
 import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.snow.css'
 
 export default function ProductForm({
   content: content_,
@@ -107,28 +107,28 @@ export default function ProductForm({
 
   return (
     <>
-      <div className="grid gap-4" style={{ gridTemplateColumns: '1fr auto' }}>
-        <TextArea
-          rows={1}
-          onChange={changeName}
-          value={name}
-          placeholder="Введите заголовок"
-          className="text-2xl self-start flex-grow max-w-xl transition-all border-b border-solid pb-1 border-transparent focus:border-b-secondary/70 focus:border-solid resize-none"
-        />
-        <CategoryPicker
-          customCategory={customCategory}
-          setCustomCategory={setCustomCategory}
-          categoryId={categoryId}
-          setCategoryId={setCategoryId}
-          className="row-span-2"
-        />
-        <TextAreaResize
-          setValue={setContent}
+      <div className="flex flex-col gap-4">
+        <div className="flex gap-4">
+          <TextArea
+            rows={1}
+            onChange={changeName}
+            value={name}
+            placeholder="Введите заголовок"
+            className="text-2xl self-start flex-grow max-w-xl transition-all border-b border-solid pb-1 border-transparent focus:border-b-secondary/70 focus:border-solid resize-none"
+          />
+          <CategoryPicker
+            customCategory={customCategory}
+            setCustomCategory={setCustomCategory}
+            categoryId={categoryId}
+            setCategoryId={setCategoryId}
+            className="row-span-2"
+          />
+        </div>
+        <ReactQuill
+          className="min-h-10 [&_p]:text-secondary [&_li]:text-secondary mb-16 redactor-styles"
           value={content}
-          className="max-w-xl min-h-10 [&_p]:text-teritary"
-          placeholder="Введите текст"
+          onChange={setContent}
         />
-        <ReactQuill className="max-w-xl min-h-10 [&_p]:text-teritary" value={content} onChange={setContent} />
       </div>
 
       {materials.length > 0 && (
