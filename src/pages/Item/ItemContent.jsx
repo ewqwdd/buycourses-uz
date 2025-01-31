@@ -46,7 +46,7 @@ export default function ItemContent({ data }) {
   return (
     <>
       <div
-        className="text-sm font-medium text-secondary redactor-styles w-full pl-2"
+        className="text-sm font-medium text-secondary redactor-styles redactor-render w-full pl-2"
         dangerouslySetInnerHTML={{ __html: data.content }}
       />
       {materials.length > 0 && (

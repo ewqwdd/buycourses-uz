@@ -52,11 +52,11 @@ div[role="status"] {
     line-height: 32px !important;
 }
 
-.redactor-styles ul li {
+.redactor-render ul li {
     list-style: disc !important;
 }
 
-.redactor-styles ol li {
+.redactor-render ol li {
     list-style: decimal !important;
 }
 
