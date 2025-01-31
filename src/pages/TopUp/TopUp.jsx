@@ -21,6 +21,10 @@ export default function TopUp() {
   const balanceText = `Баланс ${formatPrice(balance)}`
 
   const onSubmit = (sum) => {
+    if (!sum) {
+      toast.error('Введите сумму')
+      return
+    }
     setLoading(true)
     $api
       .post('/deposit', { amount: parseFloat(sum) })
