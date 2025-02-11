@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react'
 import toast from 'react-hot-toast'
 
 const _subTitle = 'После пополнения вы сможете купить что-либо в нашем магазине'
-const _afterInput = 'Visa, Mastercard, МИР'
+const _afterInput = 'Humo, Uzcard'
 const _paceholder = 'Сумма для пополнения'
 const _buttonText = 'Оплатить картой'
 
