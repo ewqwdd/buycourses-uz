@@ -62,6 +62,7 @@ export default function Create() {
         })
         .catch((err) => {
           console.error(err)
+          setIsLoading(false)
           if (err instanceof AxiosError) {
             toast.error(err.response.data?.message)
             return
