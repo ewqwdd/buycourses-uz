@@ -22,14 +22,14 @@ export default function TopUp() {
 
   const balanceText = `${typings.balance} ${formatPrice(balance)}`
 
-  const onSubmitKhalti = (sum) => {
+  const onSubmit = (sum) => {
     if (!sum) {
       toast.error(typings.enterAmount)
       return
     }
     setLoading(true)
     $api
-      .post('/deposit/khati', { amount: parseFloat(sum) })
+      .post('/deposit', { amount: parseFloat(sum) })
       .then(({ data }) => {
         window.location.href = data.url
       })
@@ -44,27 +44,6 @@ export default function TopUp() {
       })
   }
 
-  const onSubmitEsewa = (sum) => {
-    if (!sum) {
-      toast.error(typings.enterAmount)
-      return
-    }
-    setLoading(true)
-    $api
-      .post('/deposit/esewa', { amount: parseFloat(sum) })
-      .then(({ data }) => {
-        window.location.href = data.url
-      })
-      .catch((err) => {
-        console.error(err)
-        setLoading(false)
-        if (err instanceof AxiosError) {
-          toast.error(err.response?.data?.message || typings.depostError)
-          return
-        }
-        toast.error(typings.depostError)
-      })
-  }
 
   return (
     <Main>
@@ -75,7 +54,7 @@ export default function TopUp() {
           'animate-pulse pointer-events-none': loading,
         })}
       >
-        <TopUpSidebar onSubmit={onSubmitKhalti} onSubmitSecond={onSubmitEsewa} buttonTextSecond={'Top up with Esewa'} />
+        <TopUpSidebar onSubmit={onSubmit} />
         <Card className={cva('flex-1 p-0 relative')}>
           {filtered.length > 0 ? (
             <TransactionsTable transactions={filtered} />
