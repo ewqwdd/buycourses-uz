@@ -1,5 +1,5 @@
 export const typings = {
-  brand: 'CS2 MARKET',
+  brand: 'MEGAKOMPYUTER',
   myPurchases: 'Мои покупки',
   purchases: 'Покупки',
   deposit: 'Пополнить баланс',
