@@ -13,6 +13,7 @@ import useUserStore from '../../shared/store/useUserStore'
 import { AxiosError } from 'axios'
 import { emailRegex } from '../../shared/lib/regex'
 import { useNavigate } from 'react-router'
+import { typings } from '../../shared/lib/typings'
 
 export default function Register() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -29,22 +30,22 @@ export default function Register() {
     const email = emailRef.current.value
 
     if (!email || !password || !passwordConfirm) {
-      toast.error('Заполните все поля')
+      toast.error(typings.fillAllFields)
       return
     }
 
     if (emailRegex.test(email) === false) {
-      toast.error('Некорректный email')
+      toast.error(typings.emailError)
       return
     }
 
     if (password.length < 8) {
-      toast.error('Пароль должен быть не менее 8 символов')
+      toast.error(typings.passwordError)
       return
     }
 
     if (password !== passwordConfirm) {
-      toast.error('Пароли не совпадают')
+      toast.error(typings.passwordMatchError)
       return
     }
 
@@ -63,10 +64,10 @@ export default function Register() {
       .catch((e) => {
         console.error(e)
         if (e instanceof AxiosError) {
-          toast.error(e.response?.data?.message || 'Ошибка регистрации')
+          toast.error(e.response?.data?.message || typings.registerError)
           return
         }
-        toast.error('Ошибка регистрации')
+        toast.error(typings.registerError)
       })
       .finally(() => {
         setIsLoading(false)
@@ -82,24 +83,24 @@ export default function Register() {
         })}
       >
         <SquareAvatar className={'self-center'} />
-        <h1 className="text-primary font-bold text-xl mt-4 text-center">BuyCourses.uz</h1>
-        <p className={cva(pDefault, 'text-center mt-6')}>Регистарция</p>
-        <Input ref={emailRef} className="mt-3 bg-foreground1" placeholder="Ваш email" />
-        <Input ref={passwordRef} className="mt-3 bg-foreground1" type="password" placeholder="Пароль" />
+        <h1 className="text-primary font-bold text-xl mt-4 text-center">{typings.brand}</h1>
+        <p className={cva(pDefault, 'text-center mt-6')}>{typings.registration}</p>
+        <Input ref={emailRef} className="mt-3 bg-foreground1" placeholder={typings.yourEmail} />
+        <Input ref={passwordRef} className="mt-3 bg-foreground1" type="password" placeholder={typings.password} />
         <Input
           ref={passwordConfirmRef}
           className="mt-3 bg-foreground1"
           type="password"
-          placeholder="Подтвердите пароль"
+          placeholder={typings.confirmPassword}
         />
-        <p className={cva(pDefault, 'mt-2')}>Если у вас нет аккаунта - мы его создадим</p>
+        <p className={cva(pDefault, 'mt-2')}>{typings.noAccount}</p>
         <Button className="mt-5" onClick={register}>
-          Создать аккаунт
+          {typings.createAccount}
           <Right />
         </Button>
         <div className="mt-12 bg-foreground1 rounded-xl flex flex-col gap-3 p-5 items-center">
           <QuestionMark className="size-4 text-overlayForeground" />
-          <p className={cva(pDefault, 'text-center')}>Подтверждать почту не нужно</p>
+          <p className={cva(pDefault, 'text-center')}>{typings.noEmailConfirm}</p>
         </div>
       </div>
     </MainNoNav>

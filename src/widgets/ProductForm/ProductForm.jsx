@@ -1,10 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { TextAreaResize } from '../../shared/ui/TextAreaResize'
+import { useCallback, useState } from 'react'
 import { Button } from '../../shared/ui/Button'
 import { TextArea } from '../../shared/ui/TextArea'
-import { Badge } from '../../shared/ui/Badge'
-import Pencil from '../../shared/icons/Pencil.svg'
-import { MaterialForm } from '../MaterialForm'
 import { floatRegex } from '../../shared/lib/regex'
 import CategoryPicker from '../CategoryPicker/CategoryPicker'
 import ImageUp from '../../shared/icons/ImageUp.svg'
@@ -12,6 +8,7 @@ import { cva } from '../../shared/lib/cva'
 import toast from 'react-hot-toast'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import { typings } from '../../shared/lib/typings'
 
 export default function ProductForm({
   content: content_,
@@ -23,11 +20,7 @@ export default function ProductForm({
 }) {
   const [content, setContent] = useState(content_ ?? '')
   const [name, setName] = useState(name_ ?? '')
-  const [materials, setMaterials] = useState(materials_ ?? [])
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
   const [price, setPrice] = useState(price_)
-  const [edit, setEdit] = useState()
   const [categoryId, setCategoryId] = useState(categoryId_)
   const [customCategory, setCustomCategory] = useState('')
   const [image, setImage] = useState()
@@ -43,41 +36,11 @@ export default function ProductForm({
     }
   }, [])
 
-  const onSubmitMaterial = () => {
-    setMaterials((prev) => [...prev, { name: title, url }])
-    setTitle('')
-    setUrl('')
-  }
 
-  const onSubmitMaterialEdit = () => {
-    const newMaterials = [...materials]
-    newMaterials[edit] = { name: title, url }
-    setMaterials(newMaterials)
-    setTitle('')
-    setUrl('')
-    setEdit(null)
-  }
 
-  const onDelete = () => {
-    setMaterials((prev) => prev.filter((_, i) => i !== edit))
-    setEdit(null)
-    setTitle('')
-    setUrl('')
-  }
-
-  useEffect(() => {
-    if (Number.isInteger(edit)) {
-      const item = materials[edit]
-      setTitle(item.name)
-      setUrl(item.url)
-    }
-  }, [edit, materials])
-
-  const isEdditing = Number.isInteger(edit)
   const isDisabled =
     !name ||
     !content ||
-    materials.length === 0 ||
     !price ||
     !categoryId ||
     (categoryId?.value === -1 && customCategory.length < 4)
@@ -86,13 +49,13 @@ export default function ProductForm({
     const file = e.target.files[0]
 
     if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      toast.error('Вы можете загружать только JPG/PNG файлы.')
+      toast.error(typings.pngError)
       e.preventDefault()
       return
     }
 
     if (file.size / 1024 / 1024 >= 2) {
-      toast.error('Размер изображения должен быть меньше 2MB.')
+      toast.error(typings.error2mb)
       e.preventDefault()
       return
     }
@@ -108,12 +71,12 @@ export default function ProductForm({
   return (
     <>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
+        <div className="flex gap-4 justify-between">
           <TextArea
             rows={1}
             onChange={changeName}
             value={name}
-            placeholder="Введите заголовок"
+            placeholder={typings.enterTitle}
             className="text-2xl self-start flex-grow max-w-xl transition-all border-b border-solid pb-1 border-transparent focus:border-b-secondary/70 focus:border-solid resize-none"
           />
           <CategoryPicker
@@ -131,28 +94,9 @@ export default function ProductForm({
         />
       </div>
 
-      {materials.length > 0 && (
-        <div className="flex gap-2 flex-wrap">
-          {materials.map((material, index) => (
-            <Badge variant="primary" key={index} className="gap-1 pr-1">
-              <span>{material.name}</span>
-              <button className="p-1" onClick={() => setEdit(index)}>
-                <Pencil className="size-3" />
-              </button>
-            </Badge>
-          ))}
-        </div>
-      )}
-      <div className="flex justify-between">
-        <MaterialForm
-          name={title}
-          setName={setTitle}
-          url={url}
-          setUrl={setUrl}
-          onSubmit={isEdditing ? onSubmitMaterialEdit : onSubmitMaterial}
-          onDelete={isEdditing ? onDelete : null}
-          isEdditing={isEdditing}
-        />
+
+      <div className="flex justify-end">
+
         <div className="cursor-pointer size-32 relative rounded-lg overflow-hidden bg-accentSecondary flex items-center justify-center">
           <input
             type="file"
@@ -179,13 +123,13 @@ export default function ProductForm({
           onChange={changePrice}
           className="max-w-40 text-lg resize-none overflow-hidden text-end pr-10"
         />
-        <span className="absolute right-0 pointer-events-none">UZS</span>
+        <span className="absolute right-0 pointer-events-none">{typings.currency}</span>
       </div>
       <Button
         className="min-w-[328px] self-end"
         disabled={isDisabled}
         onClick={() =>
-          onSubmit({ name, content, materials, price, categoryId: categoryId?.value, customCategory, image })
+          onSubmit({ name, content, price, categoryId: categoryId?.value, customCategory, image })
         }
       >
         Сохранить

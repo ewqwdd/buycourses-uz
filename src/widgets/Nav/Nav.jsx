@@ -2,32 +2,26 @@ import { memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Add from '../../shared/icons/Add.svg'
 import Home from '../../shared/icons/Add.svg'
-import Help from '../../shared/icons/Add.svg'
 import NavButton from './NavButton'
 import { BottomNav } from '../BottomNav'
 import { documentPages, noNavPages } from '../../shared/routerConfig'
 import useUserStore from '../../shared/store/useUserStore'
 import NavLogin from './NavLogin'
 import NavDetails from './NavDetails'
+import { typings } from '../../shared/lib/typings'
 
 const links = [
   {
     href: '',
-    text: 'Главная',
+    text: typings.home,
     icon: <Home />,
     id: 0,
   },
   {
     href: '/top-up',
-    text: 'Пополнить баланс',
+    text: typings.deposit,
     icon: <Add />,
     id: 1,
-  },
-  {
-    href: '/help',
-    text: 'Поддержка',
-    icon: <Help />,
-    id: 2,
   },
 ]
 
@@ -48,7 +42,7 @@ export default memo(function Nav() {
     <nav className="flex flex-col items-center pt-4 px-10">
       <div className="flex justify-between relative max-w-8xl w-full min-h-[42px] items-center border-b border-b-overlay pb-4">
         <Link to="/" className="text-lg text-secondary font-bold flex-1 museo-sans-cyrl">
-          BuyCourses.uz
+          {typings.brand}
         </Link>
 
         <div

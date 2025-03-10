@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card } from '../../shared/ui/Card'
 import Row from './Row'
 import { useQuery } from '@tanstack/react-query'
@@ -7,6 +6,7 @@ import { cva } from '../../shared/lib/cva'
 import styles from './WarehouseWithdraw.module.css'
 import { Status } from '../../shared/ui/Status'
 import { formatPrice } from '../../shared/lib/formatPrice'
+import { typings } from '../../shared/lib/typings'
 
 const fetchWithdraws = async () => {
     const { data } = await $api.get('/withdraws')
@@ -26,7 +26,7 @@ export default function WithdrawTable() {
         'animate-pulse pointer-events-none': isFetching,
       })}
     >
-      <Row heading values={['Дата', 'Номер карты', 'Статус', 'Сумма']} />
+      <Row heading values={[typings.date, typings.cardNumber, typings.status, typings.amount]} />
       {data.map((transaction) => (
         <Row
           key={transaction.id}
@@ -40,7 +40,7 @@ export default function WithdrawTable() {
       ))}
       {data.length === 0 && (
         <h2 className="text-base font-semibold text-teritary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          Пока нет выводов
+          {typings.noWithdrawals}
         </h2>
       )}
     </Card>

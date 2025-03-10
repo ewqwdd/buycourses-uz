@@ -1,8 +1,9 @@
 import ShopSidebarSwitcher from './ShopSidebarSwitcher'
-import { memo, useState } from 'react'
+import { memo } from 'react'
 import { TopUpCard } from '../TopUpCard'
 import { formatPrice } from '../../shared/lib/formatPrice'
 import { formatCurrency } from '../../shared/lib/formatCurrecny'
+import { typings } from '../../shared/lib/typings'
 
 export default memo(function WarehouseSidebar({ setSum }) {
   return (
@@ -12,13 +13,13 @@ export default memo(function WarehouseSidebar({ setSum }) {
     >
       <ShopSidebarSwitcher key={'shop-sidebar-switcher'} />
       <TopUpCard
-        subTitle="Вывод произойдёт в течение 24х часов"
-        afterInput={`Будет выведено 0,00 ${formatCurrency(0)}`}
-        placeholder="Сумма для вывода"
-        buttonText="Вывести"
+        subTitle={typings.withdrawIn24}
+        afterInput={`${typings.amountToWithdraw} ${formatCurrency(0)}`}
+        placeholder={typings.withdrawPlaceholder}
+        buttonText={typings.withdraw}
         setSum={setSum}
         renderAfterInput={(value, ref) => {
-          ref.textContent = `Будет выведено ${formatPrice(parseFloat(value || 0))}`
+          ref.textContent = `${typings.withdrawAfterInput} ${formatPrice(parseFloat(value || 0))}`
         }}
       />
     </aside>

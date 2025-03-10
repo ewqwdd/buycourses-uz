@@ -10,6 +10,8 @@ import TransactionsTable from './TransactionsTable'
 import { cva } from '../../shared/lib/cva'
 import toast from 'react-hot-toast'
 import $api from '../../shared/lib/$api'
+import { AxiosError } from 'axios'
+import { typings } from '../../shared/lib/typings'
 
 export default function TopUp() {
   const balance = useUserStore((state) => state.user?.balance) ?? 0
@@ -18,16 +20,16 @@ export default function TopUp() {
 
   const [loading, setLoading] = useState(false)
 
-  const balanceText = `Баланс ${formatPrice(balance)}`
+  const balanceText = `${typings.balance} ${formatPrice(balance)}`
 
-  const onSubmit = (sum) => {
+  const onSubmitKhalti = (sum) => {
     if (!sum) {
-      toast.error('Введите сумму')
+      toast.error(typings.enterAmount)
       return
     }
     setLoading(true)
     $api
-      .post('/deposit', { amount: parseFloat(sum) })
+      .post('/deposit/khati', { amount: parseFloat(sum) })
       .then(({ data }) => {
         window.location.href = data.url
       })
@@ -35,29 +37,51 @@ export default function TopUp() {
         console.error(err)
         setLoading(false)
         if (err instanceof AxiosError) {
-          toast.error(err.response?.data?.message || 'Ошибка пополнения')
+          toast.error(err.response?.data?.message || typings.depostError)
           return
         }
-        toast.error('Ошибка поплнения')
+        toast.error(typings.depostError)
+      })
+  }
+
+  const onSubmitEsewa = (sum) => {
+    if (!sum) {
+      toast.error(typings.enterAmount)
+      return
+    }
+    setLoading(true)
+    $api
+      .post('/deposit/esewa', { amount: parseFloat(sum) })
+      .then(({ data }) => {
+        window.location.href = data.url
+      })
+      .catch((err) => {
+        console.error(err)
+        setLoading(false)
+        if (err instanceof AxiosError) {
+          toast.error(err.response?.data?.message || typings.depostError)
+          return
+        }
+        toast.error(typings.depostError)
       })
   }
 
   return (
     <Main>
-      <Title title="Пополнение баланса" />
-      <DefaultHeader title={'Пополнение баланса'} subTitle={balanceText} />
+      <Title title={typings.depositBalance} />
+      <DefaultHeader title={typings.depositBalance} subTitle={balanceText} />
       <div
         className={cva('flex gap-20 mt-10', {
           'animate-pulse pointer-events-none': loading,
         })}
       >
-        <TopUpSidebar onSubmit={onSubmit} />
+        <TopUpSidebar onSubmit={onSubmitKhalti} onSubmitSecond={onSubmitEsewa} buttonTextSecond={'Top up with Esewa'} />
         <Card className={cva('flex-1 p-0 relative')}>
           {filtered.length > 0 ? (
             <TransactionsTable transactions={filtered} />
           ) : (
             <h2 className="text-base font-semibold text-teritary absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              История пополнений пуста
+              {typings.emptyHistory}
             </h2>
           )}
         </Card>

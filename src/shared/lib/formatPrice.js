@@ -3,11 +3,10 @@ export function formatPrice(price) {
     throw new Error('Input must be a number');
   }
 
-  return new Intl.NumberFormat('ru-RU', {
+  return new Intl.NumberFormat('ne-NP', {
     style: 'currency',
-    currency: 'UZS',
+    currency: 'NPR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(price);
 }
-

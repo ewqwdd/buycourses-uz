@@ -22,7 +22,7 @@ const fetchCategory = async ({ pageParam = 0, queryKey }) => {
       nextCursor: data.items.length > 0 ? pageParam + 1 : null,
     }
   } catch (error) {
-    console.error('Ошибка при загрузке категорий:', error)
+    console.error('Error while loading categories:', error)
     return { items: [], nextCursor: null }
   }
 }

@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { formatPrice } from '../../shared/lib/formatPrice'
 import { cva } from '../../shared/lib/cva'
+import { typings } from '../../shared/lib/typings'
 
 export default function TransactionsTable({ transactions }) {
   const text = (i, heading) =>
@@ -12,8 +13,8 @@ export default function TransactionsTable({ transactions }) {
 
   return (
     <div className="grid grid-cols-2 w-full">
-      <span className={text(1, true)}>Дата</span>
-      <span className={text(2, true)}>Сумма</span>
+      <span className={text(1, true)}>{typings.date}</span>
+      <span className={text(2, true)}>{typings.amount}</span>
       {transactions.map((elem) => (
         <Fragment key={elem.id}>
           <span className={text(1)}>{elem.createdAt.slice(0, 10)}</span>

@@ -5,10 +5,8 @@ import { Main } from '../../widgets/Main'
 import { ShopSidebar } from '../../widgets/ShopSidebar'
 import { Link } from 'react-router-dom'
 import Back from '../../shared/ui/Back/Back'
-import { Button } from '../../shared/ui/Button'
 import { Title } from '../../shared/ui/Title'
 import { useQuery } from '@tanstack/react-query'
-import { useCategories } from '../../shared/hooks/useCategories'
 import ItemContent from './ItemContent'
 import $api from '../../shared/lib/$api'
 import { cva } from '../../shared/lib/cva'
@@ -18,7 +16,7 @@ const fetchProduct = async ({ queryKey }) => {
     const { data } = await $api.get(`/products/${queryKey[1]}`)
     return data
   } catch (error) {
-    console.error('Ошибка при загрузке категорий:', error)
+    console.error('Error while loading category:', error)
     return { items: [], nextCursor: null }
   }
 }
@@ -50,7 +48,7 @@ export default function Item() {
 
   return (
     <Main>
-      <Title title="Воронка продаж 4.0 (Продвинутая версия)" />
+      {data && <Title title={data?.name} />}
       <DefaultHeader title={data?.name} subTitle={back} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />

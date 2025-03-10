@@ -12,6 +12,7 @@ import useUserStore from '../../shared/store/useUserStore'
 import { AxiosError } from 'axios'
 import { emailRegex } from '../../shared/lib/regex'
 import { useNavigate } from 'react-router'
+import { typings } from '../../shared/lib/typings'
 
 export default function Login() {
   const pDefault = 'font-medium text-sm text-overlayForeground'
@@ -27,12 +28,12 @@ export default function Login() {
     const email = emailRef.current.value
 
     if (!email || !password) {
-      toast.error('Заполните все поля')
+      toast.error(typings.fillAllFields)
       return
     }
 
     if (emailRegex.test(email) === false) {
-      toast.error('Некорректный email')
+      toast.error(typings.emailError)
       return
     }
 
@@ -50,10 +51,10 @@ export default function Login() {
       .catch((e) => {
         console.error(e)
         if (e instanceof AxiosError) {
-          toast.error(e.response?.data?.message || 'Ошибка Авторизации')
+          toast.error(e.response?.data?.message || typings.authError)
           return
         }
-        toast.error('Ошибка Авторизации')
+        toast.error(typings.authError)
       })
       .finally(() => {
         setIsLoading(false)
@@ -69,13 +70,13 @@ export default function Login() {
         })}
       >
         <SquareAvatar className={'self-center'} />
-        <h1 className="text-primary font-bold text-xl mt-4 text-center">BuyCourses.uz</h1>
-        <p className={cva(pDefault, 'text-center mt-6')}>Авторизация</p>
-        <Input ref={emailRef} className="mt-3 bg-foreground1" placeholder="Ваш email" />
-        <Input ref={passwordRef} className="mt-3 bg-foreground1" placeholder="Пароль" type="password" />
-        <p className={cva(pDefault, 'mt-2')}>Восстановление пароля через поддержку</p>
+        <h1 className="text-primary font-bold text-xl mt-4 text-center">{typings.brand}</h1>
+        <p className={cva(pDefault, 'text-center mt-6')}>{typings.authorization}</p>
+        <Input ref={emailRef} className="mt-3 bg-foreground1" placeholder={typings.yourEmail} />
+        <Input ref={passwordRef} className="mt-3 bg-foreground1" placeholder={typings.password} type="password" />
+        <p className={cva(pDefault, 'mt-2')}>{typings.recovery}</p>
         <Button onClick={login} className="mt-5">
-          Войти
+          {typings.login}
           <Right />
         </Button>
       </div>

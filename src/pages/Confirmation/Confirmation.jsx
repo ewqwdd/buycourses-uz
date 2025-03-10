@@ -9,15 +9,16 @@ import { cva } from '../../shared/lib/cva'
 import { Button } from '../../shared/ui/Button'
 import Right from '../../shared/icons/RIght.svg'
 import { useEffect } from 'react'
+import { typings } from '../../shared/lib/typings'
 
 const fetchTransaction = async ({ queryKey }) => {
   try {
     const { data } = await $api.get(`/transactions/${queryKey[1]}`)
     return data
   } catch (error) {
-    console.error('Ошибка при загрузке транзакции:', error)
+    console.error(typings.transactionLoadError + ':', error)
     if (error instanceof AxiosError) {
-      toast.error(error.response?.data?.message || 'Ошибка при загрузке транзакции')
+      toast.error(error.response?.data?.message || typings.transactionLoadError)
     }
     throw error
   }
@@ -25,7 +26,7 @@ const fetchTransaction = async ({ queryKey }) => {
 
 export default function Confirmation() {
   const [searchParams] = useSearchParams()
-  const title = searchParams.get('payment_status') === 'cancelled' ? 'Платеж отклонен' : 'Оплачено'
+  const title = searchParams.get('payment_status') === 'cancelled' ? typings.declined : typings.paid
   const id = searchParams.get('id')
   const navigate = useNavigate()
 
@@ -53,10 +54,10 @@ export default function Confirmation() {
           <>
             <h1 className="text-2xl font-semibold text-primary">{title}</h1>
             <p className="text-secondary mt-2 text-base font-medium text-center">
-              Ваш баланс пополнен на <b className="text-accentSecondary font-semibold">{data?.amount}</b> UZS
+              {typings.balanceTopUp} <b className="text-accentSecondary font-semibold">{data?.amount}</b> {typings.currency}
             </p>
             <Button size="sm" as={Link} to="/">
-              Перейти к покупкам <Right />
+              {typings.goToShopping} <Right />
             </Button>
           </>
         )}

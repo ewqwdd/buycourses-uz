@@ -1,4 +1,3 @@
-import { AuthConfirm } from "../pages/AuthConfirm";
 import { Category } from "../pages/Category";
 import { Confirmation } from "../pages/Confirmation";
 import { Create } from "../pages/Create";
@@ -12,13 +11,20 @@ import { TopUp } from "../pages/TopUp";
 import { Warehouse } from "../pages/Warehouse";
 import { WarehouseWithdraw } from "../pages/WarehouseWithdraw";
 import { Support } from "../widgets/Support";
-import Agreement from "./documents/Agreement";
-import LicenseAgreement from "./documents/LicenseAgreement";
+import FAQ from "./documents/FAQ";
 import PrivacyPolicy from "./documents/PrivacyPolicy";
-import Rules from "./documents/Rules";
+import ReturnsAndRefundsPolicy from "./documents/ReturnsAndRefundsPolicy";
+import ShippingPolicy from "./documents/ShippingPolicy";
+import TermsAndConditions from "./documents/TermsAndConditions";
 
-export const documentPages = ['/agreement', '/license-agreement', '/privacy-policy', '/rules'];
-export const documentTitles = ['Пользовательское соглашение', 'Лицензионное соглашение', 'Политика конфиденциальности', 'Правила сервиса'];
+export const documentPages = ['/shipping-policy', '/returns-and-refunds', '/privacy-policy', '/terms-and-conditions', '/faq'];
+export const documentTitles = [
+  'Shipping Policy',
+  'Refund and Return Policy',
+  'Privacy Policy',
+  'Terms and Conditions',
+  'Frequently Asked Questions (FAQ)'
+];
 
 export const routerConfig = {
   '': {
@@ -37,9 +43,6 @@ export const routerConfig = {
   },
   '/register': {
     component: <Register />
-  },
-  '/auth-confirm': {
-    component: <AuthConfirm />
   },
   '/email-confirm': {
     component: <EmailConfirm />
@@ -65,17 +68,20 @@ export const routerConfig = {
   '/help': {
     component: <Support />
   },
-  '/agreement': {
-    component: <Agreement />
-  },
-  '/license-agreement': {
-    component: <LicenseAgreement />
-  },
   '/privacy-policy': {
     component: <PrivacyPolicy />
   },
-  '/rules': {
-    component: <Rules />
+  '/returns-and-refunds': {
+    component: <ReturnsAndRefundsPolicy />
+  },
+  '/terms-and-conditions': {
+    component: <TermsAndConditions />
+  },
+  '/shipping-policy': {
+    component: <ShippingPolicy />
+  },
+  '/faq': {
+    component: <FAQ />
   },
   '/deposit/confirmation': {
     component: <Confirmation />

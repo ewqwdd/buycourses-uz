@@ -3,6 +3,7 @@ import Cart from '../../shared/icons/Cart.svg'
 import Dropbox from '../../shared/icons/Dropbox.svg'
 import { memo, useEffect } from 'react'
 import { useLocation } from 'react-router'
+import { typings } from '../../shared/lib/typings'
 
 export default memo(function ShopSidebarSwitcher() {
   const { pathname } = useLocation()
@@ -25,8 +26,8 @@ export default memo(function ShopSidebarSwitcher() {
 
   return (
     <div className="grid grid-cols-2 gap-1 p-1 w-full bg-background rounded-xl border border-foreground1">
-      <Tool icon={<Cart />} to={shopLink} link label={'Магазин'} active={!isWarehouse} />
-      <Tool icon={<Dropbox />} to={warehouseLink} link label={'Склад'} active={isWarehouse} />
+      <Tool icon={<Cart />} to={shopLink} link label={typings.shop} active={!isWarehouse} />
+      <Tool icon={<Dropbox />} to={warehouseLink} link label={typings.myPurchases} active={isWarehouse} />
     </div>
   )
 })

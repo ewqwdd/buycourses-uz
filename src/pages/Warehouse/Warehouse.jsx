@@ -8,6 +8,7 @@ import { Main } from '../../widgets/Main'
 import { Product } from '../../widgets/Product'
 import { ShopSidebar } from '../../widgets/ShopSidebar'
 import { useCategories } from '../../shared/hooks/useCategories'
+import { typings } from '../../shared/lib/typings'
 
 export default function Warehouse() {
   const purchasedItems = useUserStore((state) => state.purchasedProducts) ?? []
@@ -19,7 +20,7 @@ export default function Warehouse() {
   if (!hasItems) {
     content = (
       <Card className="gap-3 min-h-[442px] flex-1 justify-center items-center">
-        <h2 className="text-base font-semibold text-teritary">Здесь появятся ваши покупки</h2>
+        <h2 className="text-base font-semibold text-teritary">{typings.yourPurchases}</h2>
       </Card>
     )
   } else {
@@ -41,8 +42,8 @@ export default function Warehouse() {
 
   return (
     <Main>
-      <Title title="Покупки" />
-      <DefaultHeader title={'Склад'} subTitle={'Пусто'} />
+      <Title title={typings.purchases} />
+      <DefaultHeader title={typings.myPurchases} subTitle={typings.empty} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
         {content}

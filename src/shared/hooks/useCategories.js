@@ -6,7 +6,7 @@ const fetchCategories = async () => {
     const { data } = await $api.get(`/categories`)
     return data
   } catch (error) {
-    console.error('Ошибка при загрузке категорий:', error)
+    console.error('Error while loading category:', error)
     return []
   }
 }

@@ -14,6 +14,7 @@ import toast from 'react-hot-toast'
 import { AxiosError } from 'axios'
 import { cva } from '../../shared/lib/cva'
 import { useCategories } from '../../shared/hooks/useCategories'
+import { typings } from '../../shared/lib/typings'
 
 export default function Create() {
   const [isLoading, setIsLoading] = useState()
@@ -67,7 +68,7 @@ export default function Create() {
             toast.error(err.response.data?.message)
             return
           }
-          toast.error('Ошибка добавления')
+          toast.error(typings.addError)
         })
     },
   })
@@ -78,8 +79,8 @@ export default function Create() {
 
   return (
     <Main>
-      <Title title="Создание объявления" />
-      <DefaultHeader title={'Создание объявления'} subTitle={'0 товаров'} />
+      <Title title={typings.addingProduct} />
+      <DefaultHeader title={typings.addingProduct} subTitle={''} />
       <div className="flex gap-20 mt-10 relative z-[1]">
         <AsideWrapper className="gap-4">
           <CreationCard />

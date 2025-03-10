@@ -6,11 +6,13 @@ import { Button } from '../../shared/ui/Button'
 import PropTypes from 'prop-types'
 import { useEffect, useRef } from 'react'
 import toast from 'react-hot-toast'
+import { typings } from '../../shared/lib/typings'
 
-const _subTitle = 'После пополнения вы сможете купить что-либо в нашем магазине'
-const _afterInput = 'Humo, Uzcard'
-const _paceholder = 'Сумма для пополнения'
-const _buttonText = 'Оплатить картой'
+const _subTitle = 'After topping up, you will be able to purchase something in our store';
+const _afterInput = '';
+const _paceholder = 'Top-up amount';
+const _buttonText = 'Pay with card';
+
 
 export default function TopUpCard({
   subTitle = _subTitle,
@@ -20,6 +22,8 @@ export default function TopUpCard({
   setSum,
   renderAfterInput,
   onSubmit: _onSubmit,
+  onSubmitSecond,
+  buttonTextSecond
 }) {
   const inputRef = useRef()
   const afterInputRef = useRef()
@@ -32,14 +36,14 @@ export default function TopUpCard({
     }
   }
 
-  const onSubmit = () => {
+  const onSubmit = (fn) => {
     const sum = inputRef.current.value
-    if (_onSubmit) {
-      _onSubmit(sum)
+    if (fn) {
+      fn(sum)
       return
     }
     if (!sum) {
-      return toast.error('Введите сумму')
+      return toast.error(typings.enterAmount)
     }
     setSum?.(sum)
   }
@@ -56,7 +60,7 @@ export default function TopUpCard({
     <Card className="gap-4 items-center min-h-[422px] justify-center">
       <MoneyBox className="size-12 text-overlay" />
       <div className="flex flex-col gap-1">
-        <h3 className="font-semibold text-base text-primary  text-center">Введите сумму</h3>
+        <h3 className="font-semibold text-base text-primary  text-center">{typings.enterAmount}</h3>
         <p className="text-sm text-secondary text-center font-medium">{subTitle}</p>
       </div>
       <div className="flex flex-col gap-2 self-stretch">
@@ -64,17 +68,23 @@ export default function TopUpCard({
           onKeyDown={onKeyDown}
           ref={inputRef}
           placeholder={placeholder}
-          right={<span className="text-overlayForeground font-medium text-base">UZS</span>}
+          right={<span className="text-overlayForeground font-medium text-base">{typings.currency}</span>}
           onChange={onChange}
         />
         <span className="text-sm text-overlayForeground font-medium" ref={afterInputRef}>
           {afterInput}
         </span>
       </div>
-      <Button className="self-stretch" onClick={onSubmit}>
+      {_onSubmit && <Button className="self-stretch" onClick={() => onSubmit(_onSubmit)}>
         {buttonText}
         <Right className="size-4" />
       </Button>
+      }
+      {onSubmitSecond && <Button className="self-stretch" onClick={() => onSubmit(onSubmitSecond)}>
+        {buttonTextSecond}
+        <Right className="size-4" />
+      </Button>
+      }
     </Card>
   )
 }
@@ -83,4 +93,9 @@ TopUpCard.propTypes = {
   subTitle: PropTypes.string,
   afterInput: PropTypes.string,
   setSum: PropTypes.func.isRequired,
+  onSumbit: PropTypes.func,
+  onSubmitSecond: PropTypes.func,
+  placeholder: PropTypes.string,
+  buttonText: PropTypes.string,
+  buttonTextSecond: PropTypes.string
 }

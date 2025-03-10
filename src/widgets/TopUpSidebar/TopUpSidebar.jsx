@@ -1,18 +1,20 @@
 import { memo } from "react"
 import { TopUpCard } from "../TopUpCard"
 import { AsideWrapper } from "../AsideWrapper"
-import propTypes from 'prop-types'
+import PropTypes from "prop-types"
 
-function TopUpSidebar({ onSubmit }) {
+function TopUpSidebar({ onSubmit, onSubmitSecond, buttonTextSecond }) {
   return (
     <AsideWrapper key={'shop-sidebar-wrapper'}>
-      <TopUpCard onSubmit={onSubmit} />
+      <TopUpCard onSubmit={onSubmit} onSubmitSecond={onSubmitSecond} buttonTextSecond={buttonTextSecond} />
     </AsideWrapper>
   )
 }
 
 TopUpSidebar.propTypes = {
-  setSum: propTypes.func,
+  onSubmit: PropTypes.func,
+  onSubmitSecond: PropTypes.func,
+  buttonTextSecond: PropTypes.string,
 }
 
 export default memo(TopUpSidebar)

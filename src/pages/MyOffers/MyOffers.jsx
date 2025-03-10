@@ -8,6 +8,7 @@ import DefaultHeader from '../../widgets/DefaultHeader/DefaultHeader'
 import { Main } from '../../widgets/Main'
 import { OfferSidebar } from '../../widgets/OffersSidebar'
 import { Product } from '../../widgets/Product'
+import { typings } from '../../shared/lib/typings'
 
 export default function MyOffers() {
   const products = useUserStore((state) => state.products) ?? []
@@ -19,7 +20,7 @@ export default function MyOffers() {
   if (!hasItems) {
     content = (
       <Card className="min-h-[482px] flex-1 justify-center items-center">
-        <h2 className="text-base font-semibold text-teritary">У вас нет обьявлений</h2>
+        <h2 className="text-base font-semibold text-teritary">{typings.noProducts}</h2>
       </Card>
     )
   } else {
@@ -40,8 +41,8 @@ export default function MyOffers() {
   }
   return (
     <Main>
-      <Title title="Мои обьявления" />
-      <DefaultHeader title={'Объявление'} subTitle={'0 товаров'} />
+      <Title title={typings.myProducts} />
+      <DefaultHeader title={typings.product} subTitle={products.length + ' ' + typings.products} />
       <div className="flex gap-20 mt-10">
         <OfferSidebar />
         {content}

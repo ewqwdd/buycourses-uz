@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Card } from '../../shared/ui/Card'
 import { Input } from '../../shared/ui/Input'
 import { formatPrice } from '../../shared/lib/formatPrice'
@@ -9,6 +9,7 @@ import $api from '../../shared/lib/$api'
 import { digitRegex } from '../../shared/lib/regex'
 import toast from 'react-hot-toast'
 import { AxiosError } from 'axios'
+import { typings } from '../../shared/lib/typings'
 
 export default function Withdraw({ sum, setSum }) {
   const cardRef = useRef()
@@ -29,7 +30,7 @@ export default function Withdraw({ sum, setSum }) {
             toast.error(err.response?.data?.message)
             return
           }
-          toast.error('Ошибка при выводе средств')
+          toast.error(typings.withdrawError)
         })
         .finally(() => {
           setLoading(false)
@@ -52,7 +53,7 @@ export default function Withdraw({ sum, setSum }) {
   const onSubmit = () => {
     const cardNumber = cardRef.current.value
     if (cardNumber.length < 16 || !digitRegex.test(cardNumber)) {
-      toast.error('Введите валидный номер карты')
+      toast.error(typings.cardError)
       return
     }
     mutation.mutate({ cardNumber, amount: sum })
@@ -66,11 +67,11 @@ export default function Withdraw({ sum, setSum }) {
         })}
       >
         <div className="flex justify-between">
-          <span className="text-secondary  text-sm">Сумма вывода:</span>
+          <span className="text-secondary  text-sm">{typings.withdrawPlaceholder}:</span>
           <span className="text-secondary font-bold text-sm">{formatPrice(parseFloat(sum))}</span>
         </div>
-        <Input onKeyDown={onKeyDown} placeholder="Номер карты" ref={cardRef} />
-        <Button onClick={onSubmit}>Вывести</Button>
+        <Input onKeyDown={onKeyDown} placeholder={typings.cardNumber} ref={cardRef} />
+        <Button onClick={onSubmit}>{typings.withdraw}</Button>
       </div>
     </Card>
   )

@@ -7,6 +7,7 @@ import $api from '../../shared/lib/$api'
 import toast from 'react-hot-toast'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router'
+import { typings } from '../../shared/lib/typings'
 
 export default function ItemContent({ data }) {
   const purchasedItems = useUserStore((state) => state.purchasedProducts) ?? []
@@ -29,7 +30,7 @@ export default function ItemContent({ data }) {
       .post('/products/buy', { productId: data.id })
       .then(({ data }) => {
         addPurchase(data)
-        toast.success('Товар успешно куплен')
+        toast.success(typings.productBought)
       })
       .catch((err) => {
         if (err instanceof AxiosError) {
@@ -39,9 +40,11 @@ export default function ItemContent({ data }) {
           toast.error(err.response?.data?.message)
           return
         }
-        toast.error('Ошибка при покупке товара')
+        toast.error(typings.buyError)
       })
   }
+
+  const blocked = !import.meta.env.VITE_CAN_BUY_MULTIPLE && (purchasedIem || userItem)
 
   return (
     <>
@@ -49,18 +52,11 @@ export default function ItemContent({ data }) {
         className="text-sm font-medium text-secondary redactor-styles redactor-render w-full pl-2"
         dangerouslySetInnerHTML={{ __html: data.content }}
       />
-      {materials.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {materials.map((material) => (
-            <Material key={material.id} data={material} />
-          ))}
-        </div>
-      )}
-      {!purchasedIem && !userItem && (
+      {!blocked && (
         <>
-          <span className="text-base mt-3 text-primary font-semibold">{data.price} UZS</span>
+          <span className="text-base mt-3 text-primary font-semibold">{data.price} {typings.currency}</span>
           <Button className="min-w-[328px] mt-1" onClick={buyItem}>
-            Купить <Right className="size-4" />
+            {typings.buy} <Right className="size-4" />
           </Button>
         </>
       )}
