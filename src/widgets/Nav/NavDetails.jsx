@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router'
 export default function NavDetails({ user }) {
   const iconStyle = 'size-5 text-secondary'
   const buttonStyle = 'size-[42px] flex justify-center items-center'
-  const logout = useUserStore(state => state.logout)
+  const logout = useUserStore((state) => state.logout)
   const switchTheme = useToggleTheme()
   const navigate = useNavigate()
 
@@ -18,10 +18,13 @@ export default function NavDetails({ user }) {
         <SunFill className={iconStyle} />
       </button>
       <p className="text-sm font-semibold text-primary">{user?.email}</p>
-      <button className={buttonStyle} onClick={() => {
-        logout()
-        navigate('/')
-      }}>
+      <button
+        className={buttonStyle}
+        onClick={() => {
+          logout()
+          navigate('/')
+        }}
+      >
         <Logout className={iconStyle} />
       </button>
     </div>

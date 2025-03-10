@@ -47,7 +47,7 @@ function MaterialForm({ name, url, setName, setUrl, onSubmit, onDelete, isEdditi
       <Input placeholder="Ссылка на материал" value={url} onChange={handleUrlChange} />
       <div className="flex justify-between">
         <Button type="submit" variant="secondary">
-          {isEdditing  ? "Сохранить" : "Добавить"}
+          {isEdditing ? 'Сохранить' : 'Добавить'}
         </Button>
         {onDelete && (
           <button onClick={onDelete} type="button" className="p-2">

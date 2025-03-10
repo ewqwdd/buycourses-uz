@@ -16,7 +16,10 @@ import { typings } from '../../shared/lib/typings'
 export default function TopUp() {
   const balance = useUserStore((state) => state.user?.balance) ?? 0
   const transactions = useUserStore((state) => state.transactions) ?? []
-  const filtered = useMemo(() => transactions.filter((e) => e.type === 'deposit' && e.status === 'completed'), [transactions])
+  const filtered = useMemo(
+    () => transactions.filter((e) => e.type === 'deposit' && e.status === 'completed'),
+    [transactions]
+  )
 
   const [loading, setLoading] = useState(false)
 
@@ -43,7 +46,6 @@ export default function TopUp() {
         toast.error(typings.depostError)
       })
   }
-
 
   return (
     <Main>

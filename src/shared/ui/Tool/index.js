@@ -1,2 +1,2 @@
-import Tool from "./Tool";
-export { Tool };
+import Tool from './Tool'
+export { Tool }

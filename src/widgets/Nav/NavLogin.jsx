@@ -6,7 +6,6 @@ import { typings } from '../../shared/lib/typings'
 export default function NavLogin() {
   const { pathname } = useLocation()
 
-
   return (
     <div className="flex items-center gap-4 flex-1 justify-end">
       <Link to="/login" className="text-sm text-secondary font-semibold">

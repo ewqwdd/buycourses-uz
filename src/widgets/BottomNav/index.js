@@ -1,2 +1,2 @@
-import BottomNav from "./BottomNav";
-export { BottomNav };
+import BottomNav from './BottomNav'
+export { BottomNav }

@@ -44,12 +44,8 @@ function App() {
             minWidth: '300px',
             gap: '0.75rem',
           },
-          success: {
-            
-          },
-          error: {
-
-          },
+          success: {},
+          error: {},
         }}
       />
     </>

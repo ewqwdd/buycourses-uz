@@ -17,17 +17,14 @@ export default memo(function ShopSidebar() {
           <MoneyBox className="size-12 text-overlay" />
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold text-base text-primary  text-center">{typings.depositBalance}</h3>
-            <p className="text-sm text-secondary text-center font-medium">
-              {typings.depositBalanceSubTitle}
-            </p>
+            <p className="text-sm text-secondary text-center font-medium">{typings.depositBalanceSubTitle}</p>
           </div>
         </Card>
         <Button variant="secondary" as={Link} to="/top-up">
-            {typings.depositBalance}
-            <RightUp className="size-4" />
+          {typings.depositBalance}
+          <RightUp className="size-4" />
         </Button>
       </div>
     </AsideWrapper>
   )
-}
-)
+})

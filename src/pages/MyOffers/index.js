@@ -1,2 +1,2 @@
-import MyOffers from "./MyOffers";
-export { MyOffers };
+import MyOffers from './MyOffers'
+export { MyOffers }

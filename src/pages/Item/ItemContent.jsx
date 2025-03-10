@@ -54,7 +54,9 @@ export default function ItemContent({ data }) {
       />
       {!blocked && (
         <>
-          <span className="text-base mt-3 text-primary font-semibold">{data.price} {typings.currency}</span>
+          <span className="text-base mt-3 text-primary font-semibold">
+            {data.price} {typings.currency}
+          </span>
           <Button className="min-w-[328px] mt-1" onClick={buyItem}>
             {typings.buy} <Right className="size-4" />
           </Button>

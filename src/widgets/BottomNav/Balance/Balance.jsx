@@ -7,7 +7,7 @@ export default function Balance() {
   const balance = useUserStore((state) => state.user?.balance) ?? 0
 
   return (
-    <div className='ml-auto text-sm text-secondary font-semibold relative flex justify-center items-center'>
+    <div className="ml-auto text-sm text-secondary font-semibold relative flex justify-center items-center">
       {formatPrice(balance)}
       <div className="absolute w-full h-[38px] left-0 opacity-60">
         <div className={styles.ellipse1} />

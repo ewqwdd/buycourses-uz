@@ -20,7 +20,7 @@ export default function Login() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const [isLoading, setIsLoading] = useState(false)
-  const setUser = useUserStore(state => state.setUser)
+  const setUser = useUserStore((state) => state.setUser)
   const navigate = useNavigate()
 
   const login = () => {
@@ -44,9 +44,9 @@ export default function Login() {
         password: passwordRef.current.value,
       })
       .then(async () => {
-          const { data } = await $api.get('/me')
-          setUser(data)
-          navigate('/')
+        const { data } = await $api.get('/me')
+        setUser(data)
+        navigate('/')
       })
       .catch((e) => {
         console.error(e)

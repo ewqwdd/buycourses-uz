@@ -52,9 +52,11 @@ export default function Item() {
       <DefaultHeader title={data?.name} subTitle={back} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
-        <Card className={cva("flex-1 justify-center p-10 gap-2 items-start self-start", {
-          'animate-pulse min-h-72': loading,
-        })}>
+        <Card
+          className={cva('flex-1 justify-center p-10 gap-2 items-start self-start', {
+            'animate-pulse min-h-72': loading,
+          })}
+        >
           {!loading && <ItemContent data={data} />}
         </Card>
       </div>
