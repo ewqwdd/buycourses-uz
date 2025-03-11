@@ -9,11 +9,15 @@ import { Main } from '../../widgets/Main'
 import { OfferSidebar } from '../../widgets/OffersSidebar'
 import { Product } from '../../widgets/Product'
 import { typings } from '../../shared/lib/typings'
+import { useAdmin } from '../../shared/hooks/useAdmin'
 
 export default function MyOffers() {
   const products = useUserStore((state) => state.products) ?? []
   const { data: categories } = useCategories()
+  const admin = useAdmin()
 
+
+  if (!admin) return null
   let content
   const hasItems = products.length > 0
 
