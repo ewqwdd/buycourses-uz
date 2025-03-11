@@ -1,2 +1,2 @@
-import Warehouse from "./Warehouse";
-export { Warehouse };
+import Warehouse from './Warehouse'
+export { Warehouse }

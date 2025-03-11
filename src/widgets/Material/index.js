@@ -1,2 +1,2 @@
-import Material from "./Material";
-export { Material };
+import Material from './Material'
+export { Material }

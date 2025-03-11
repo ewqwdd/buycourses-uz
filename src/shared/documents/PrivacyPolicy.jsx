@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import { Title } from '../ui/Title';
+import { memo } from 'react'
+import { Title } from '../ui/Title'
 
 export default memo(function PrivacyPolicy() {
   return (
@@ -11,8 +11,8 @@ export default memo(function PrivacyPolicy() {
       <section className="mt-6">
         <p>
           At CHULIBAN HOTEL we want you to know how we collect, use, share, and protect information about you. By
-          interacting with CHULIBAN HOTEL through our stores, websites, mobile applications, products, and services,
-          you consent to the use of information as described in this privacy policy.
+          interacting with CHULIBAN HOTEL through our stores, websites, mobile applications, products, and services, you
+          consent to the use of information as described in this privacy policy.
         </p>
       </section>
 
@@ -94,5 +94,5 @@ export default memo(function PrivacyPolicy() {
         </p>
       </section>
     </div>
-  );
-});
+  )
+})

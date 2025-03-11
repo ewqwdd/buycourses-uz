@@ -38,7 +38,7 @@ export default function Withdraw({ sum, setSum }) {
     },
     mutationKey: 'withdraws_mutate',
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: 'withdraws', refetchType: 'all', })
+      queryClient.invalidateQueries({ queryKey: 'withdraws', refetchType: 'all' })
     },
   })
 

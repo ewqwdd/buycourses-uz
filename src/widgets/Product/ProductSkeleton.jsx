@@ -1,6 +1,6 @@
-import { cva } from "../../shared/lib/cva"
+import { cva } from '../../shared/lib/cva'
 
-export default function ProductSkeleton({className, as, ...props }) {
+export default function ProductSkeleton({ className, as, ...props }) {
   const Cmp = as || 'div'
   return (
     <Cmp

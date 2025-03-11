@@ -54,7 +54,8 @@ export default function Confirmation() {
           <>
             <h1 className="text-2xl font-semibold text-primary">{title}</h1>
             <p className="text-secondary mt-2 text-base font-medium text-center">
-              {typings.balanceTopUp} <b className="text-accentSecondary font-semibold">{data?.amount}</b> {typings.currency}
+              {typings.balanceTopUp} <b className="text-accentSecondary font-semibold">{data?.amount}</b>{' '}
+              {typings.currency}
             </p>
             <Button size="sm" as={Link} to="/">
               {typings.goToShopping} <Right />

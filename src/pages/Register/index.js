@@ -1,2 +1,2 @@
-import Register from "./Register";
-export { Register };
+import Register from './Register'
+export { Register }

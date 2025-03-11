@@ -8,7 +8,6 @@ export default function AuthRequired({ children }) {
   const isMounted = useUserStore((state) => state.isMounted)
   const navigate = useNavigate()
 
-
   useEffect(() => {
     if (isMounted && !user) {
       navigate('/login')

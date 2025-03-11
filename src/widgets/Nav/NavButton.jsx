@@ -6,11 +6,9 @@ export default function NavButton({ href, text, icon, active, ...props }) {
   return (
     <Link
       to={href}
-      className={
-        cva('flex items-center rounded-xl gap-2 text-sm text-secondary font-semibold min-h-[42px] px-4', {
-          'text-primary bg-overlay':  active,
-        })
-      }
+      className={cva('flex items-center rounded-xl gap-2 text-sm text-secondary font-semibold min-h-[42px] px-4', {
+        'text-primary bg-overlay': active,
+      })}
       activeClassName="text-accent"
       {...props}
     >

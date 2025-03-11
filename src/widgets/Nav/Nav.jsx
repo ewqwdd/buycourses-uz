@@ -27,16 +27,16 @@ const links = [
 
 export default memo(function Nav() {
   const { pathname } = useLocation()
-  const user = useUserStore(state => state.user)
-  const isMounted = useUserStore(state => state.isMounted)
+  const user = useUserStore((state) => state.user)
+  const isMounted = useUserStore((state) => state.isMounted)
 
   if (noNavPages.find((elem) => pathname.includes(elem))) return null
 
-  const active = [...links].reverse().find(e => pathname.includes(e.href))
+  const active = [...links].reverse().find((e) => pathname.includes(e.href))
 
   const navRight = user ? <NavDetails user={user} /> : <NavLogin />
 
-  const isDocument = documentPages.find(e => e === pathname)
+  const isDocument = documentPages.find((e) => e === pathname)
 
   return (
     <nav className="flex flex-col items-center pt-4 px-10">
@@ -55,7 +55,7 @@ export default memo(function Nav() {
             <NavButton active={!isDocument && active.id === elem.id} key={index} {...elem} />
           ))}
         </div>
-          {isMounted ? navRight: <div className='flex-1' />}
+        {isMounted ? navRight : <div className="flex-1" />}
       </div>
       <div className="h-[22px] mt-4 max-w-8xl w-full flex gap-8">
         <BottomNav />

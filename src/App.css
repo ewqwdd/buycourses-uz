@@ -1,66 +1,67 @@
-
 .bg::after {
-    background-color: hsla(var(--foreground-1), 1);
-    content: '';
-    left: 0;
-    top: 0;
-    position: fixed;
-    height: 335px;
-    width: 100%;
-    z-index: -1;
+  background-color: hsla(var(--foreground-1), 1);
+  content: '';
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 335px;
+  width: 100%;
+  z-index: -1;
 }
 
 .bg.no-nav::after {
-    height: 168px;
+  height: 168px;
 }
 
-div[role="status"] {
-    gap: 12px;
-    margin: 0;
-    justify-content: start;
-    font-size: 14px;
-    line-height: 22.4px;
-    font-weight: 600;
+div[role='status'] {
+  gap: 12px;
+  margin: 0;
+  justify-content: start;
+  font-size: 14px;
+  line-height: 22.4px;
+  font-weight: 600;
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
 .redactor-styles {
-    color: hsla(var(--secondary), 1) !important;
+  color: hsla(var(--secondary), 1) !important;
 }
 
-.redactor-styles h1, .redactor-styles h2, .redactor-styles h3 {
-    color: hsla(var(--primary), 1) !important;
+.redactor-styles h1,
+.redactor-styles h2,
+.redactor-styles h3 {
+  color: hsla(var(--primary), 1) !important;
 }
 
 .redactor-styles h3 {
-    font-size: 16px !important;
-    line-height: 25.6px !important;
+  font-size: 16px !important;
+  line-height: 25.6px !important;
 }
 
 .redactor-styles h2 {
-    font-size: 18px !important;
-    line-height: 28.8px !important;    
+  font-size: 18px !important;
+  line-height: 28.8px !important;
 }
 
 .redactor-styles h1 {
-    font-size: 20px !important;
-    line-height: 32px !important;
+  font-size: 20px !important;
+  line-height: 32px !important;
 }
 
 .redactor-render ul li {
-    list-style: disc !important;
+  list-style: disc !important;
 }
 
 .redactor-render ol li {
-    list-style: decimal !important;
+  list-style: decimal !important;
 }
 
 .redactor-styles a {
-    color: hsla(var(--accent), 1) !important;
-    text-decoration: none !important;
+  color: hsla(var(--accent), 1) !important;
+  text-decoration: none !important;
 }

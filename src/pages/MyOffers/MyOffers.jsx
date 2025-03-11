@@ -16,7 +16,6 @@ export default function MyOffers() {
   const { data: categories } = useCategories()
   const admin = useAdmin()
 
-
   if (!admin) return null
   let content
   const hasItems = products.length > 0

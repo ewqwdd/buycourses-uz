@@ -9,9 +9,9 @@ import { formatPrice } from '../../shared/lib/formatPrice'
 import { typings } from '../../shared/lib/typings'
 
 const fetchWithdraws = async () => {
-    const { data } = await $api.get('/withdraws')
-    return data
-  }
+  const { data } = await $api.get('/withdraws')
+  return data
+}
 
 export default function WithdrawTable() {
   const { data, isFetching } = useQuery({

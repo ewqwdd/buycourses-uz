@@ -1,2 +1,2 @@
-import WarehouseWithdraw from "./WarehouseWithdraw";
-export { WarehouseWithdraw };
+import WarehouseWithdraw from './WarehouseWithdraw'
+export { WarehouseWithdraw }

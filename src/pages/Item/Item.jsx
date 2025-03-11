@@ -10,6 +10,8 @@ import { useQuery } from '@tanstack/react-query'
 import ItemContent from './ItemContent'
 import $api from '../../shared/lib/$api'
 import { cva } from '../../shared/lib/cva'
+import { useAdmin } from '../../shared/hooks/useAdmin'
+import DeleteItem from './DeleteItem'
 
 const fetchProduct = async ({ queryKey }) => {
   try {
@@ -27,6 +29,7 @@ export default function Item() {
   const slug = splitted[splitted.length - 1]
   const categorySlug = splitted[splitted.length - 2]
   const from = state?.from
+  const admin = useAdmin()
 
   const { data, isFetching } = useQuery({
     queryKey: ['product', slug],
@@ -46,15 +49,26 @@ export default function Item() {
     return <Navigate to="/" />
   }
 
+  const title = admin ? (
+    <div className="flex items-end gap-8">
+      {data?.name}
+      <DeleteItem id={data?.id} slug={categorySlug} />
+    </div>
+  ) : (
+    data?.name
+  )
+
   return (
     <Main>
       {data && <Title title={data?.name} />}
-      <DefaultHeader title={data?.name} subTitle={back} />
+      <DefaultHeader title={title} subTitle={back} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
-        <Card className={cva("flex-1 justify-center p-10 gap-2 items-start self-start", {
-          'animate-pulse min-h-72': loading,
-        })}>
+        <Card
+          className={cva('flex-1 justify-center p-10 gap-2 items-start self-start', {
+            'animate-pulse min-h-72': loading,
+          })}
+        >
           {!loading && <ItemContent data={data} />}
         </Card>
       </div>

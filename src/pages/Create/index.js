@@ -1,2 +1,2 @@
-import Create from "./Create";
-export { Create };
+import Create from './Create'
+export { Create }

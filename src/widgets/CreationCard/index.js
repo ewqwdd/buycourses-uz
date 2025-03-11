@@ -1,2 +1,2 @@
-import CreationCard from "./CreationCard";
-export { CreationCard };
+import CreationCard from './CreationCard'
+export { CreationCard }

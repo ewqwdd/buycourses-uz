@@ -20,13 +20,13 @@ export default function Create() {
   const [isLoading, setIsLoading] = useState()
   const addProduct = useUserStore((state) => state.addProduct)
   const navigate = useNavigate()
-  const {data: categories} = useCategories()
+  const { data: categories } = useCategories()
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
     onSuccess: (_, variables) => {
       if (variables.categoryId !== -1) {
-        const category = categories.find(e => e.id === variables.categoryId)
+        const category = categories.find((e) => e.id === variables.categoryId)
         if (!category) return
         queryClient.invalidateQueries({
           queryKey: ['category', category.slug],
@@ -55,7 +55,7 @@ export default function Create() {
         .post('/products', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
-          }
+          },
         })
         .then((data) => {
           addProduct({ ...values, id: data.data.id, slug: data.data.slug })

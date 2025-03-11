@@ -36,14 +36,8 @@ export default function ProductForm({
     }
   }, [])
 
-
-
   const isDisabled =
-    !name ||
-    !content ||
-    !price ||
-    !categoryId ||
-    (categoryId?.value === -1 && customCategory.length < 4)
+    !name || !content || !price || !categoryId || (categoryId?.value === -1 && customCategory.length < 4)
 
   const imageChange = (e) => {
     const file = e.target.files[0]
@@ -94,9 +88,7 @@ export default function ProductForm({
         />
       </div>
 
-
       <div className="flex justify-end">
-
         <div className="cursor-pointer size-32 relative rounded-lg overflow-hidden bg-accentSecondary flex items-center justify-center">
           <input
             type="file"
@@ -128,9 +120,7 @@ export default function ProductForm({
       <Button
         className="min-w-[328px] self-end"
         disabled={isDisabled}
-        onClick={() =>
-          onSubmit({ name, content, price, categoryId: categoryId?.value, customCategory, image })
-        }
+        onClick={() => onSubmit({ name, content, price, categoryId: categoryId?.value, customCategory, image })}
       >
         Сохранить
       </Button>

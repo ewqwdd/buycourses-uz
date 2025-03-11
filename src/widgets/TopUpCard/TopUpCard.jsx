@@ -8,11 +8,10 @@ import { useEffect, useRef } from 'react'
 import toast from 'react-hot-toast'
 import { typings } from '../../shared/lib/typings'
 
-const _subTitle = 'After topping up, you will be able to purchase something in our store';
-const _afterInput = '';
-const _paceholder = 'Top-up amount';
-const _buttonText = 'Pay with card';
-
+const _subTitle = 'After topping up, you will be able to purchase something in our store'
+const _afterInput = ''
+const _paceholder = 'Top-up amount'
+const _buttonText = 'Pay with card'
 
 export default function TopUpCard({
   subTitle = _subTitle,
@@ -23,7 +22,7 @@ export default function TopUpCard({
   renderAfterInput,
   onSubmit: _onSubmit,
   onSubmitSecond,
-  buttonTextSecond
+  buttonTextSecond,
 }) {
   const inputRef = useRef()
   const afterInputRef = useRef()
@@ -75,16 +74,18 @@ export default function TopUpCard({
           {afterInput}
         </span>
       </div>
-      {_onSubmit && <Button className="self-stretch" onClick={() => onSubmit(_onSubmit)}>
-        {buttonText}
-        <Right className="size-4" />
-      </Button>
-      }
-      {onSubmitSecond && <Button className="self-stretch" onClick={() => onSubmit(onSubmitSecond)}>
-        {buttonTextSecond}
-        <Right className="size-4" />
-      </Button>
-      }
+      {_onSubmit && (
+        <Button className="self-stretch" onClick={() => onSubmit(_onSubmit)}>
+          {buttonText}
+          <Right className="size-4" />
+        </Button>
+      )}
+      {onSubmitSecond && (
+        <Button className="self-stretch" onClick={() => onSubmit(onSubmitSecond)}>
+          {buttonTextSecond}
+          <Right className="size-4" />
+        </Button>
+      )}
     </Card>
   )
 }
@@ -97,5 +98,5 @@ TopUpCard.propTypes = {
   onSubmitSecond: PropTypes.func,
   placeholder: PropTypes.string,
   buttonText: PropTypes.string,
-  buttonTextSecond: PropTypes.string
+  buttonTextSecond: PropTypes.string,
 }

@@ -1,7 +1,6 @@
-
 .table {
-    display: grid;
-    grid-template-columns: auto 1fr 1fr 0.8fr;
-    grid-auto-rows: 50px;
-    padding: 0;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 0.8fr;
+  grid-auto-rows: 50px;
+  padding: 0;
 }
