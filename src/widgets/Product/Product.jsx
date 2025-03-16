@@ -21,7 +21,7 @@ export default function Product({ name, category, image, className, as, ...props
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   as: PropTypes.elementType,
   className: PropTypes.string,
 }

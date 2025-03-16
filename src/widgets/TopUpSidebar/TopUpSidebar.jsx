@@ -1,7 +1,7 @@
-import { memo } from "react"
-import { TopUpCard } from "../TopUpCard"
-import { AsideWrapper } from "../AsideWrapper"
-import PropTypes from "prop-types"
+import { memo } from 'react'
+import { TopUpCard } from '../TopUpCard'
+import { AsideWrapper } from '../AsideWrapper'
+import PropTypes from 'prop-types'
 
 function TopUpSidebar({ onSubmit, onSubmitSecond, buttonTextSecond }) {
   return (

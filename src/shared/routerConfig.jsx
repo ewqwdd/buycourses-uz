@@ -1,3 +1,4 @@
+import { Cart } from '../pages/Cart'
 import { Category } from '../pages/Category'
 import { Confirmation } from '../pages/Confirmation'
 import { Create } from '../pages/Create'
@@ -55,6 +56,10 @@ export const routerConfig = {
   },
   '/my-offers': {
     component: <MyOffers />,
+    requireAuth: true,
+  },
+  '/cart': {
+    component: <Cart />,
     requireAuth: true,
   },
   '/create': {

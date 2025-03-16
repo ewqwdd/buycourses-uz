@@ -1,8 +1,6 @@
-import React from 'react'
 import { Button } from '../../shared/ui/Button'
 import Right from '../../shared/icons/RIght.svg'
 import useUserStore from '../../shared/store/useUserStore'
-import { Material } from '../../widgets/Material'
 import $api from '../../shared/lib/$api'
 import toast from 'react-hot-toast'
 import { AxiosError } from 'axios'
@@ -14,22 +12,15 @@ export default function ItemContent({ data }) {
   const userItems = useUserStore((state) => state.products) ?? []
   const navigate = useNavigate()
 
-  const addPurchase = useUserStore((state) => state.addPurchase)
+  const addBasket = useUserStore((state) => state.addBasket)
   const purchasedIem = purchasedItems.find((item) => item.id === data.id)
   const userItem = userItems.find((item) => item.id === data.id)
 
-  let materials = []
-  if (purchasedIem) {
-    materials = purchasedIem.materials
-  } else if (userItem) {
-    materials = userItem.materials
-  }
-
   const buyItem = () => {
     $api
-      .post('/products/buy', { productId: data.id })
-      .then(({ data }) => {
-        addPurchase(data)
+      .post('/products/cart/' + data.id)
+      .then(() => {
+        addBasket({ ...data, amount: 1 })
         toast.success(typings.productBought)
       })
       .catch((err) => {
@@ -58,7 +49,7 @@ export default function ItemContent({ data }) {
             {data.price} {typings.currency}
           </span>
           <Button className="min-w-[328px] mt-1" onClick={buyItem}>
-            {typings.buy} <Right className="size-4" />
+            {typings.addToCart} <Right className="size-4" />
           </Button>
         </>
       )}

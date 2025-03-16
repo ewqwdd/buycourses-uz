@@ -9,10 +9,7 @@ function withOpacity(variableName) {
 }
 
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       // fontFamily: {
@@ -45,9 +42,8 @@ export default {
       spacing: {
         '8xl': '85rem',
         '9xl': '90rem',
-      }
+      },
     },
   },
   plugins: [],
 }
-

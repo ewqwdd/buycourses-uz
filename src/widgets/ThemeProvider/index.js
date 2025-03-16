@@ -1,4 +1,4 @@
-import { useToggleTheme, useTheme } from "./context";
-import ThemeProvider from "./ThemeProvider";
+import { useToggleTheme, useTheme } from './context'
+import ThemeProvider from './ThemeProvider'
 
-export { ThemeProvider, useToggleTheme, useTheme };
+export { ThemeProvider, useToggleTheme, useTheme }

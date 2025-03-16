@@ -11,6 +11,9 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useCategories } from '../../shared/hooks/useCategories'
 import { ListWrapper } from '../../shared/ui/ListWrapper'
+import { useAdmin } from '../../shared/hooks/useAdmin'
+import UploadImage from './UploadImage'
+import DeleteCategory from './DeleteCategory'
 
 const LIMIT = 6
 
@@ -46,6 +49,7 @@ export default function Category() {
     staleTime: 5 * 60 * 1000,
     cacheTime: 10 * 60 * 1000,
   })
+  const admin = useAdmin()
 
   useEffect(() => {
     if (inView) {
@@ -59,10 +63,20 @@ export default function Category() {
     return <Navigate to="/" />
   }
 
+  const title = admin ? (
+    <div className="flex gap-4 items-center">
+      {category?.name}
+      <UploadImage slug={slug} />
+      <DeleteCategory slug={slug} />
+    </div>
+  ) : (
+    category?.name
+  )
+
   return (
     <Main>
       <Title title={category?.name} />
-      <DefaultHeader title={category?.name} subTitle={subTitle} />
+      <DefaultHeader title={title} subTitle={subTitle} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
         <ListWrapper>

@@ -1,2 +1,2 @@
-import TopUpSidebar from "./TopUpSidebar";
-export { TopUpSidebar };
+import TopUpSidebar from './TopUpSidebar'
+export { TopUpSidebar }

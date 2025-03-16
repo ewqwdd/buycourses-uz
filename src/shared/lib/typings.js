@@ -30,7 +30,7 @@ export const typings = {
   balance: 'Баланс',
   depostError: 'Ошибка пополнения',
   back: 'Назад',
-  productBought: 'Скин куплен',
+  productBought: 'Доавлен в корзину',
   buyError: 'Ошибка при покупке',
   buy: 'Купить',
   balanceTopUp: 'Ваш баланс пополнен на',
@@ -70,4 +70,8 @@ export const typings = {
   enterTitle: 'Введите название',
   save: 'Сохранить',
   product: 'Скин',
+  cart: 'Корзина',
+  addingCart: 'Добавление в корзину',
+  addingCartDescription: 'Вы можете добавить скины в корзину',
+  addToCart: 'Добавить в корзину',
 }

@@ -6,7 +6,7 @@ const useUserStore = create((set) => ({
   isMounted: false,
 
   setUser: (userData) => {
-    const { products, purchasedProducts, transactions, ...user } = userData
+    const { products, purchasedProducts, transactions, basket, ...user } = userData
     set((state) => ({
       ...state,
       products,
@@ -14,6 +14,7 @@ const useUserStore = create((set) => ({
       transactions,
       user,
       isMounted: true,
+      basket: basket.map((e) => ({ ...e, amount: e.UserBasket.amount })) ?? [],
     }))
   },
 
@@ -22,6 +23,42 @@ const useUserStore = create((set) => ({
       ...state,
       products: [...state.products, product],
     }))
+  },
+
+  addBasket: (product) => {
+    set((state) => {
+      const productIndex = state.basket.findIndex((item) => item.id === product.id)
+      if (productIndex !== -1) {
+        state.basket[productIndex].amount++
+        return {
+          ...state,
+          basket: [...state.basket],
+        }
+      }
+      return {
+        ...state,
+        basket: [...state.basket, { ...product, amount: 1 }],
+      }
+    })
+  },
+
+  deleteBasket: (id) => {
+    set((state) => {
+      const productIndex = state.basket.findIndex((item) => item.id === id)
+
+      if (productIndex !== -1 && state.basket[productIndex].amount > 1) {
+        state.basket[productIndex].amount--
+        return {
+          ...state,
+          basket: [...state.basket],
+        }
+      }
+
+      return {
+        ...state,
+        basket: state.basket.filter((item) => item.id !== id),
+      }
+    })
   },
 
   addPurchase: (product) => {
