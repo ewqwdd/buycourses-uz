@@ -13,15 +13,15 @@ export default memo(function ShopSidebar() {
     <AsideWrapper key={'shop-sidebar-wrapper'}>
       <ShopSidebarSwitcher key={'shop-sidebar-switcher'} />
       <div className="flex flex-col gap-4">
-        <Card className="gap-4 items-center min-h-[266px] px-16">
+        <Card className="gap-4 items-center min-h-[266px] px-8">
           <MoneyBox className="size-12 text-overlay" />
           <div className="flex flex-col gap-1">
-            <h3 className="font-semibold text-base text-primary  text-center">{typings.depositBalance}</h3>
-            <p className="text-sm text-secondary text-center font-medium">{typings.depositBalanceSubTitle}</p>
+            <h3 className="font-semibold text-base text-primary  text-center">{typings.signUpRecommendation}</h3>
+            <p className="text-sm text-secondary text-center font-medium">{typings.signUpRecommendationSubTitle}</p>
           </div>
         </Card>
-        <Button variant="secondary" as={Link} to="/top-up">
-          {typings.depositBalance}
+        <Button variant="secondary" as={Link} to="/warehouse">
+          {typings.myPurchases}
           <RightUp className="size-4" />
         </Button>
       </div>

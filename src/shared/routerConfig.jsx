@@ -41,10 +41,6 @@ export const routerConfig = {
     component: <Warehouse />,
     requireAuth: true,
   },
-  '/top-up': {
-    component: <TopUp />,
-    requireAuth: true,
-  },
   '/login': {
     component: <Login />,
   },
@@ -63,10 +59,6 @@ export const routerConfig = {
   },
   '/create': {
     component: <Create />,
-    requireAuth: true,
-  },
-  '/warehouse/withdraw': {
-    component: <WarehouseWithdraw />,
     requireAuth: true,
   },
   '/:slug': {

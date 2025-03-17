@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Add from '../../shared/icons/Add.svg'
 import Home from '../../shared/icons/Add.svg'
 import NavButton from './NavButton'
 import { BottomNav } from '../BottomNav'
@@ -12,16 +11,10 @@ import { typings } from '../../shared/lib/typings'
 
 const links = [
   {
-    href: '',
+    href: '/',
     text: typings.home,
     icon: <Home />,
     id: 0,
-  },
-  {
-    href: '/top-up',
-    text: typings.deposit,
-    icon: <Add />,
-    id: 1,
   },
 ]
 
