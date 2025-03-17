@@ -1,3 +1,4 @@
+import { AConfirmation } from '../pages/AConfirmation'
 import { Category } from '../pages/Category'
 import { Confirmation } from '../pages/Confirmation'
 import { Create } from '../pages/Create'
@@ -91,6 +92,9 @@ export const routerConfig = {
   },
   '/deposit/confirmation': {
     component: <Confirmation />,
+  },
+  '/deposit/a/confirmation': {
+    component: <AConfirmation />,
   },
 }
 
