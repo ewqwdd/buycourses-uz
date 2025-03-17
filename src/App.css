@@ -65,3 +65,30 @@ div[role='status'] {
   color: hsla(var(--accent), 1) !important;
   text-decoration: none !important;
 }
+
+input[type='checkbox'] {
+  /*
+    Remove the default appearance.
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+
+  /*
+    Set the size of the checkbox.
+  */
+  width: 16px;
+  height: 16px;
+
+  box-shadow: 0 0 0 2px hsla(var(--accent-2), 0); /* Outer border */
+  border-radius: 3px;
+  outline: 2px solid hsla(var(--accent), 1); /* Inner border */
+  outline-offset: 2px;
+  transition: 0.15s ease-in-out;
+}
+
+input[type='checkbox']:checked {
+  box-shadow: 0 0 0px 2px hsla(var(--accent-2), 0.2); /* Outer border */
+  background: hsla(var(--accent), 1);
+}

@@ -2,12 +2,14 @@ import { useLocation } from 'react-router'
 import { Button } from '../../shared/ui/Button'
 import { Link } from 'react-router-dom'
 import { typings } from '../../shared/lib/typings'
+import CartLink from './CartLink'
 
 export default function NavLogin() {
   const { pathname } = useLocation()
 
   return (
     <div className="flex items-center gap-4 flex-1 justify-end">
+      <CartLink />
       <Link to="/login" className="text-sm text-secondary font-semibold">
         {typings.login}
       </Link>

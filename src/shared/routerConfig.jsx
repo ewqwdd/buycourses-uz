@@ -60,7 +60,6 @@ export const routerConfig = {
   },
   '/cart': {
     component: <Cart />,
-    requireAuth: true,
   },
   '/create': {
     component: <Create />,

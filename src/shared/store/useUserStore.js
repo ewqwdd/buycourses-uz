@@ -4,6 +4,7 @@ import $api from '../lib/$api'
 const useUserStore = create((set) => ({
   user: undefined,
   isMounted: false,
+  basket: JSON.parse(localStorage.getItem('basket') ?? '[]'),
 
   setUser: (userData) => {
     const { products, purchasedProducts, transactions, basket, ...user } = userData
@@ -25,19 +26,36 @@ const useUserStore = create((set) => ({
     }))
   },
 
-  addBasket: (product) => {
+  addBasket: (product, amount) => {
     set((state) => {
       const productIndex = state.basket.findIndex((item) => item.id === product.id)
       if (productIndex !== -1) {
-        state.basket[productIndex].amount++
+        if (amount) {
+          state.basket[productIndex].amount = amount
+        } else {
+          state.basket[productIndex].amount++
+        }
         return {
           ...state,
           basket: [...state.basket],
         }
       }
+      const basket = [...state.basket, { ...product, amount: 1 }]
+      localStorage.setItem('basket', JSON.stringify(basket))
       return {
         ...state,
-        basket: [...state.basket, { ...product, amount: 1 }],
+        basket,
+      }
+    })
+  },
+
+  deleteFullAmount: (id) => {
+    set((state) => {
+      const filtered = state.basket.filter((e) => e.id !== id)
+      localStorage.setItem('basket', JSON.stringify(filtered))
+      return {
+        ...state,
+        basket: [...filtered],
       }
     })
   },
@@ -54,9 +72,11 @@ const useUserStore = create((set) => ({
         }
       }
 
+      const basket = state.basket.filter((item) => item.id !== id)
+      localStorage.setItem('basket', JSON.stringify(basket))
       return {
         ...state,
-        basket: state.basket.filter((item) => item.id !== id),
+        basket,
       }
     })
   },

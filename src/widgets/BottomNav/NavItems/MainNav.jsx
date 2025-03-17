@@ -13,7 +13,6 @@ export default function MainNav() {
   return (
     <>
       <BottomNavItem to="/" icon={<Undo />} label={typings.allProducts} active={!isCart && !isMyOffers} />
-      <BottomNavItem to="/cart" icon={<EarthGlobe />} label={typings.cart} active={isCart} />
       {admin && <BottomNavItem to="/my-offers" icon={<EarthGlobe />} label={typings.myProducts} active={isMyOffers} />}
     </>
   )

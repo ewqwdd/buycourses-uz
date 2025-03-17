@@ -13,10 +13,16 @@ export default function ItemContent({ data }) {
   const navigate = useNavigate()
 
   const addBasket = useUserStore((state) => state.addBasket)
-  const purchasedIem = purchasedItems.find((item) => item.id === data.id)
-  const userItem = userItems.find((item) => item.id === data.id)
+  const purchasedIem = purchasedItems?.find((item) => item.id === data.id)
+  const userItem = userItems?.find((item) => item.id === data.id)
+  const user = useUserStore((state) => state.user)
 
   const buyItem = () => {
+    if (!user) {
+      addBasket({ ...data, amount: 1 })
+      toast.success(typings.productBought)
+      return
+    }
     $api
       .post('/products/cart/' + data.id)
       .then(() => {

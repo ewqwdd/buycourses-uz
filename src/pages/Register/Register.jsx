@@ -23,6 +23,7 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false)
   const setUser = useUserStore((state) => state.setUser)
   const navigate = useNavigate()
+  const products = useUserStore((state) => state.basket) ?? []
 
   const register = () => {
     const password = passwordRef.current.value
@@ -55,6 +56,7 @@ export default function Register() {
         email: emailRef.current.value,
         password: passwordRef.current.value,
         passwordConfirm: passwordConfirmRef.current.value,
+        basket: products,
       })
       .then(async () => {
         const { data } = await $api.get('/me')

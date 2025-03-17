@@ -2,9 +2,18 @@ import { memo } from 'react'
 import { cva } from '../../shared/lib/cva'
 import PropTypes from 'prop-types'
 
-function DefaultHeader({ title, subTitle, className, ...props }) {
+function DefaultHeader({ title, subTitle, className, sticky = true, ...props }) {
   return (
-    <div className={cva('flex flex-col gap-2 sticky top-4', className)} {...props}>
+    <div
+      className={cva(
+        'flex flex-col gap-2 top-4',
+        {
+          sticky,
+        },
+        className
+      )}
+      {...props}
+    >
       <span className="text-sm font-medium text-primary/60">{subTitle}</span>
       <h1 className="text-4xl font-semibold">{title}&nbsp;</h1>
     </div>
@@ -16,6 +25,7 @@ DefaultHeader.propTypes = {
   subTitle: PropTypes.string,
   className: PropTypes.string,
   props: PropTypes.object,
+  sticky: PropTypes.bool,
 }
 
 export default memo(DefaultHeader)
