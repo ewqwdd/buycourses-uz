@@ -10,9 +10,9 @@ export default memo(function ShippingPolicy() {
 
       <section className="mt-6">
         <p>
-          Welcome to CHULIBAN HOTEL! We’re dedicated to delivering the finest everyday products right to your door.
-          Below you’ll find detailed information about our shipping practices, options, and policies to ensure a smooth
-          and satisfying shopping experience.
+          Welcome to St. John{"'"}s Hill Estate Pvt. Ltd.! We’re dedicated to delivering the finest everyday products
+          right to your door. Below you’ll find detailed information about our shipping practices, options, and policies
+          to ensure a smooth and satisfying shopping experience.
         </p>
       </section>
 
@@ -51,9 +51,9 @@ export default memo(function ShippingPolicy() {
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">International Shipping</h2>
         <p>
-          Currently, CHULIBAN HOTEL ships to Nepal. International shipping rates and delivery times vary based on
-          destination. Please be aware that international orders may be subject to additional customs fees or import
-          taxes upon arrival.
+          Currently, St. John{"'"}s Hill Estate Pvt. Ltd. ships to Nepal. International shipping rates and delivery
+          times vary based on destination. Please be aware that international orders may be subject to additional
+          customs fees or import taxes upon arrival.
         </p>
       </section>
 
@@ -86,16 +86,17 @@ export default memo(function ShippingPolicy() {
         </p>
         <ul className="pl-6 list-disc">
           <li>
-            Email: <a href="mailto:ainulmahammad14@gmail.com">ainulmahammad14@gmail.com</a>
+            Email: <a href="mailto:ainulmahammad14@gmail.com">stjohnshillestate55@gmail.com</a>
           </li>
-          <li>Phone: 9862306075</li>
+          <li>Phone: 94777945486</li>
+          <li>St. Johns Hill Estate, Madulkelle, Sandy Sri Lanka</li>
         </ul>
       </section>
 
       <section className="mt-8">
         <p>
-          Thank you for choosing CHULIBAN HOTEL. We look forward to serving you and ensuring your satisfaction with
-          every order.
+          Thank you for choosing St. John{"'"}s Hill Estate Pvt. Ltd.. We look forward to serving you and ensuring your
+          satisfaction with every order.
         </p>
       </section>
     </div>

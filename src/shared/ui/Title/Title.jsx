@@ -6,14 +6,14 @@ export default function Title({ title }) {
     if (!title) return
     document.title = title
     return () => {
-      document.title = 'CHULIBAN HOTEL'
+      document.title = `St. John's Hill Estate Pvt. Ltd.`
     }
   }, [title])
   return null
 }
 
 Title.defaultProps = {
-  title: 'CHULIBAN HOTEL',
+  title: `St. John's Hill Estate Pvt. Ltd.`,
 }
 
 Title.propTypes = {
