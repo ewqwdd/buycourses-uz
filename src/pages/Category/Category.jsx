@@ -86,7 +86,7 @@ export default function Category() {
             .map((item, index) => (
               <Product key={index} {...item} category={category?.name} as={Link} to={pathname + '/' + item.slug} />
             ))}
-          <div ref={ref} className="col-span-2 h-20" />
+          <div ref={ref} className="col-span-4 h-20 mt-10" />
         </ListWrapper>
       </div>
     </Main>

@@ -13,7 +13,6 @@ import { typings } from '../../shared/lib/typings'
 export default function ProductForm({
   content: content_,
   name: name_,
-  materials: materials_,
   price: price_,
   categoryId: categoryId_,
   onSubmit,
@@ -37,7 +36,7 @@ export default function ProductForm({
   }, [])
 
   const isDisabled =
-    !name || !content || !price || !categoryId || (categoryId?.value === -1 && customCategory.length < 4)
+    !name || !price || !categoryId || (categoryId?.value === -1 && customCategory.length < 2)
 
   const imageChange = (e) => {
     const file = e.target.files[0]
