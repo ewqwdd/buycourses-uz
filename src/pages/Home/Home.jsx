@@ -12,12 +12,12 @@ export default function Home() {
 
   return (
     <Main>
-      <DefaultHeader title={typings.shop} subTitle={data?.items?.length + ' ' + typings.products} />
+      <DefaultHeader title={typings.shop} subTitle={data?.length + ' ' + typings.products} />
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
         <ListWrapper>
           {isLoading && new Array(6).fill().map((_, i) => <ProductSkeleton key={i} />)}
-          {data?.items.map((item, index) => (
+          {data?.map((item, index) => (
             <Product key={index} {...item} category={typings.tea} as={Link} to={'/' + item.slug} />
           ))}
         </ListWrapper>
