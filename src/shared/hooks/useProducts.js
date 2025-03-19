@@ -4,7 +4,7 @@ import $api from '../lib/$api'
 const fetchProducts = async () => {
   try {
     const { data } = await $api.get(`/products`)
-    return data
+    return data.items || []
   } catch (error) {
     console.error('Error while loading category:', error)
     return []
