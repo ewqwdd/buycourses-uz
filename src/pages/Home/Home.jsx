@@ -8,7 +8,7 @@ import { useProducts } from '../../shared/hooks/useProducts'
 import { Product, ProductSkeleton } from '../../widgets/Product'
 
 export default function Home() {
-  const { data, isLoading } = useProducts()
+  const { data, isFetching } = useProducts()
 
   return (
     <Main>
@@ -16,7 +16,7 @@ export default function Home() {
       <div className="flex gap-20 mt-10">
         <ShopSidebar />
         <ListWrapper>
-          {isLoading && new Array(6).fill().map((_, i) => <ProductSkeleton key={i} />)}
+          {isFetching && new Array(6).fill().map((_, i) => <ProductSkeleton key={i} />)}
           {data?.map((item, index) => (
             <Product key={index} {...item} category={typings.tea} as={Link} to={'/' + item.slug} />
           ))}
