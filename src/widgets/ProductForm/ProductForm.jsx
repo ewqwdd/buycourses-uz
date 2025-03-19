@@ -35,8 +35,7 @@ export default function ProductForm({
     }
   }, [])
 
-  const isDisabled =
-    !name || !price || !categoryId || (categoryId?.value === -1 && customCategory.length < 2)
+  const isDisabled = !name || !price || !categoryId || (categoryId?.value === -1 && customCategory.length < 2)
 
   const imageChange = (e) => {
     const file = e.target.files[0]

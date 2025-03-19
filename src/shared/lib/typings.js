@@ -102,4 +102,5 @@ export const typings = {
   placeOrder: 'Place Order',
   signUpRecommendation: 'Sign Up for a Better Shopping Experience!',
   signUpRecommendationSubTitle: 'Save your favorite items and enjoy exclusive offers.',
+  tea: 'Tea',
 }

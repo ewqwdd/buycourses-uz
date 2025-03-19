@@ -1,5 +1,4 @@
 import { Cart } from '../pages/Cart'
-import { Category } from '../pages/Category'
 import { Confirmation } from '../pages/Confirmation'
 import { Create } from '../pages/Create'
 import { EmailConfirm } from '../pages/EmailConfirm'
@@ -7,10 +6,9 @@ import { Home } from '../pages/Home'
 import { Item } from '../pages/Item'
 import { Login } from '../pages/Login'
 import { MyOffers } from '../pages/MyOffers'
+import { Products } from '../pages/Products'
 import { Register } from '../pages/Register'
-import { TopUp } from '../pages/TopUp'
 import { Warehouse } from '../pages/Warehouse'
-import { WarehouseWithdraw } from '../pages/WarehouseWithdraw'
 import { Support } from '../widgets/Support'
 import FAQ from './documents/FAQ'
 import PrivacyPolicy from './documents/PrivacyPolicy'
@@ -61,10 +59,7 @@ export const routerConfig = {
     component: <Create />,
     requireAuth: true,
   },
-  '/:slug': {
-    component: <Category />,
-  },
-  '/:slug/:item': {
+  '/:item': {
     component: <Item />,
   },
   '/help': {
