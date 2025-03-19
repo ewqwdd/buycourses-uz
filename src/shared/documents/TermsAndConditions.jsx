@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { Title } from '../ui/Title'
+import ContactInfo from './ContactInfo'
 
 export default memo(function TermsConditions() {
   return (
@@ -82,12 +83,7 @@ export default memo(function TermsConditions() {
 
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Customer Service Contact Information</h2>
-        <ul className="pl-6 list-disc">
-          <li>
-            Email: <a href="mailto:ainulmahammad14@gmail.com">ainulmahammad14@gmail.com</a>
-          </li>
-          <li>Phone: 9862306075</li>
-        </ul>
+        <ContactInfo />
       </section>
 
       <section className="mt-8">

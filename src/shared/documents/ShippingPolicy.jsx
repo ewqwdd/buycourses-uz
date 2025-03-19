@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import { Title } from '../ui/Title'
+import ContactInfo from './ContactInfo'
 
 export default memo(function ShippingPolicy() {
   return (
@@ -84,13 +85,7 @@ export default memo(function ShippingPolicy() {
           For any questions or concerns about your order’s shipping and delivery, please contact our customer service
           team:
         </p>
-        <ul className="pl-6 list-disc">
-          <li>
-            Email: <a href="mailto:ainulmahammad14@gmail.com">stjohnshillestate55@gmail.com</a>
-          </li>
-          <li>Phone: 94777945486</li>
-          <li>St. Johns Hill Estate, Madulkelle, Sandy Sri Lanka</li>
-        </ul>
+        <ContactInfo />
       </section>
 
       <section className="mt-8">
