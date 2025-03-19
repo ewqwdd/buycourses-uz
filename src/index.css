@@ -197,16 +197,16 @@
 
 @layer base {
   :root {
-    --primary: 0, 0%, 100%;
-    --teritary: 220, 2%, 51%;
-    --secondary: 240, 2%, 77%;
-    --foreground-1: 222, 15%, 13%;
-    --foreground-2: 228, 20%, 95%;
+    --primary: 0, 0%, 0%; /* Черный вместо белого */
+    --teritary: 220, 2%, 49%;
+    --secondary: 240, 2%, 23%;
+    --foreground-1: 222, 15%, 87%;
+    --foreground-2: 228, 20%, 5%;
 
-    --overlay: 222, 10%, 19%;
-    --overlay-foreground: 223, 3%, 40%;
+    --overlay: 222, 10%, 81%;
+    --overlay-foreground: 223, 3%, 60%;
 
-    --background: 224, 24%, 9%;
+    --background: 224, 24%, 95%; /* Был темный, теперь почти белый */
 
     --accent: 228, 100%, 69%;
     --accent-2: 228, 100%, 75%;

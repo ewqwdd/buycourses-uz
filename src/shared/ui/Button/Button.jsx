@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default function Button({ className, as, variant = 'primary', size = 'md', ...props }) {
   const variants = {
-    primary: 'bg-accent text-primary',
+    primary: 'bg-accent text-background',
     secondary: 'bg-accentSecondary text-black',
     neutral: 'bg-overlay text-primary',
   }

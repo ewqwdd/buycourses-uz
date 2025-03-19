@@ -10,9 +10,9 @@ export default memo(function FAQ() {
 
       <section className="mt-6">
         <p>
-          Welcome to the FAQ section of St. John{"'"}s Hill Estate Pvt. Ltd., where we aim to answer your most common questions regarding our
-          products, ordering process, shipping, and more. If you can’t find the answer you’re looking for, please
-          contact us for further assistance.
+          Welcome to the FAQ section of St. John{"'"}s Hill Estate Pvt. Ltd., where we aim to answer your most common
+          questions regarding our products, ordering process, shipping, and more. If you can’t find the answer you’re
+          looking for, please contact us for further assistance.
         </p>
       </section>
 

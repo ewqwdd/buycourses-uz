@@ -16,7 +16,7 @@ export const typings = {
   withdraw: 'Withdraw',
   withdrawAfterInput: 'Amount to Withdraw',
   enterAmount: 'Enter Amount',
-  currency: 'USD',
+  currency: 'LKR',
   yourPurchases: 'Your orders will be displayed here',
   empty: 'Empty',
   cardError: 'Please enter a valid card number',

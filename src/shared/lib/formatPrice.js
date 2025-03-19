@@ -3,10 +3,10 @@ export function formatPrice(price) {
     throw new Error('Input must be a number')
   }
 
-  return new Intl.NumberFormat('ru-RU', {
+  return new Intl.NumberFormat('si-LK', {
     style: 'currency',
-    currency: 'UZS',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    currency: 'LKR',
+    minimumFractionDigits: 2, // В рупиях часто используют 2 знака после запятой
+    maximumFractionDigits: 2,
   }).format(price)
 }

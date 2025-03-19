@@ -10,9 +10,10 @@ export default memo(function PrivacyPolicy() {
 
       <section className="mt-6">
         <p>
-          At St. John{"'"}s Hill Estate Pvt. Ltd. we want you to know how we collect, use, share, and protect information about you. By
-          interacting with St. John{"'"}s Hill Estate Pvt. Ltd. through our stores, websites, mobile applications, products, and services, you
-          consent to the use of information as described in this privacy policy.
+          At St. John{"'"}s Hill Estate Pvt. Ltd. we want you to know how we collect, use, share, and protect
+          information about you. By interacting with St. John{"'"}s Hill Estate Pvt. Ltd. through our stores, websites,
+          mobile applications, products, and services, you consent to the use of information as described in this
+          privacy policy.
         </p>
       </section>
 

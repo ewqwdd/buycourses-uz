@@ -11,17 +11,17 @@ export default memo(function RefundReturnPolicy() {
 
       <section className="mt-6">
         <p>
-          Thank you for shopping at St. John{"'"}s Hill Estate Pvt. Ltd., your go-to destination for the finest everyday products. We stand
-          behind the quality of our products and want every purchase to be a positive experience. Below, we outline the
-          conditions under which we accept returns and issue refunds.
+          Thank you for shopping at St. John{"'"}s Hill Estate Pvt. Ltd., your go-to destination for the finest everyday
+          products. We stand behind the quality of our products and want every purchase to be a positive experience.
+          Below, we outline the conditions under which we accept returns and issue refunds.
         </p>
       </section>
 
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Return Period</h2>
         <p>
-          30-Day Return Policy: You can return most items purchased from St. John{"'"}s Hill Estate Pvt. Ltd. within 30 days of the delivery
-          date.
+          30-Day Return Policy: You can return most items purchased from St. John{"'"}s Hill Estate Pvt. Ltd. within 30
+          days of the delivery date.
         </p>
       </section>
 
@@ -91,7 +91,10 @@ export default memo(function RefundReturnPolicy() {
       </section>
 
       <section className="mt-8">
-        <p>We value your business and are here to ensure your satisfaction with every purchase from St. John{"'"}s Hill Estate Pvt. Ltd..</p>
+        <p>
+          We value your business and are here to ensure your satisfaction with every purchase from St. John{"'"}s Hill
+          Estate Pvt. Ltd..
+        </p>
       </section>
     </div>
   )
