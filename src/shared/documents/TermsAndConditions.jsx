@@ -11,7 +11,7 @@ export default memo(function TermsConditions() {
 
       <section className="mt-6">
         <p>
-          The terms “We” / “Us” / “Our”/”Company” individually and collectively refer to CHULIBAN HOTEL and the terms
+          The terms “We” / “Us” / “Our”/”Company” individually and collectively refer to St. John{"'"}s Hill Estate Pvt. Ltd. and the terms
           “Visitor”/”User” refer to the users. By using this website, you agree to be bound by these Terms and
           Conditions.
         </p>
@@ -21,7 +21,7 @@ export default memo(function TermsConditions() {
         <h2 className="text-2xl font-semibold mb-4">Use of Content</h2>
         <p>
           All logos, brands, marks, names, and content appearing on this site, unless otherwise noted, are properties
-          owned or used under license by CHULIBAN HOTEL. You may not modify, distribute, display, reproduce, or use any
+          owned or used under license by St. John{"'"}s Hill Estate Pvt. Ltd.. You may not modify, distribute, display, reproduce, or use any
           content for commercial purposes without written permission.
         </p>
       </section>
@@ -44,7 +44,7 @@ export default memo(function TermsConditions() {
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Indemnity</h2>
         <p>
-          Users agree to indemnify and hold CHULIBAN HOTEL harmless from any claims, actions, or damages resulting from
+          Users agree to indemnify and hold St. John{"'"}s Hill Estate Pvt. Ltd. harmless from any claims, actions, or damages resulting from
           their use of this website or violation of these Terms and Conditions.
         </p>
       </section>
@@ -52,7 +52,7 @@ export default memo(function TermsConditions() {
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Liability</h2>
         <p>
-          CHULIBAN HOTEL shall not be liable for any direct, indirect, incidental, or consequential damages arising from
+          St. John{"'"}s Hill Estate Pvt. Ltd. shall not be liable for any direct, indirect, incidental, or consequential damages arising from
           the use or inability to use the website, including loss of data or business interruptions.
         </p>
       </section>
@@ -60,7 +60,7 @@ export default memo(function TermsConditions() {
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Disclaimer of Consequential Damages</h2>
         <p>
-          CHULIBAN HOTEL or any associated entities shall not be responsible for any consequential damages, loss of
+          St. John{"'"}s Hill Estate Pvt. Ltd. or any associated entities shall not be responsible for any consequential damages, loss of
           data, or technical issues arising from the use of this website.
         </p>
       </section>

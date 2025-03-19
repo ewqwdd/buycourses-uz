@@ -10,8 +10,8 @@ export default memo(function PrivacyPolicy() {
 
       <section className="mt-6">
         <p>
-          At CHULIBAN HOTEL we want you to know how we collect, use, share, and protect information about you. By
-          interacting with CHULIBAN HOTEL through our stores, websites, mobile applications, products, and services, you
+          At St. John{"'"}s Hill Estate Pvt. Ltd. we want you to know how we collect, use, share, and protect information about you. By
+          interacting with St. John{"'"}s Hill Estate Pvt. Ltd. through our stores, websites, mobile applications, products, and services, you
           consent to the use of information as described in this privacy policy.
         </p>
       </section>
@@ -63,7 +63,7 @@ export default memo(function PrivacyPolicy() {
         <h2 className="text-2xl font-semibold mb-4">How is Your Information Shared?</h2>
         <p>We share your information with:</p>
         <ul className="pl-6 list-disc">
-          <li>CHULIBAN HOTEL subsidiaries and affiliates.</li>
+          <li>St. John{"'"}s Hill Estate Pvt. Ltd. subsidiaries and affiliates.</li>
           <li>Service providers for marketing and support services.</li>
           <li>Legal authorities when required by law.</li>
           <li>Third-party advertising platforms.</li>
