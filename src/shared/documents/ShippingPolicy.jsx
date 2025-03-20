@@ -52,7 +52,7 @@ export default memo(function ShippingPolicy() {
       <section className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">International Shipping</h2>
         <p>
-          Currently, St. John{"'"}s Hill Estate Pvt. Ltd. ships to Nepal. International shipping rates and delivery
+          Currently, St. John{"'"}s Hill Estate Pvt. Ltd. ships to Sri Lanka. International shipping rates and delivery
           times vary based on destination. Please be aware that international orders may be subject to additional
           customs fees or import taxes upon arrival.
         </p>
