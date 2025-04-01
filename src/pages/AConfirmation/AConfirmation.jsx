@@ -1,9 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
-import { Card } from '../../shared/ui/Card'
-import { Main } from '../../widgets/Main'
 import { useLayoutEffect } from 'react'
 import $api from '../../shared/lib/$api'
-import toast from 'react-hot-toast'
+import toast, { LoaderIcon } from 'react-hot-toast'
 
 export default function AConfirmation() {
   const [searchParams] = useSearchParams()
@@ -27,8 +25,8 @@ export default function AConfirmation() {
   }, [id])
 
   return (
-    <Main>
-      <Card className={'min-h-40 animate-pulse justify-center items-center'}>Loading...</Card>
-    </Main>
+    <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <LoaderIcon className="!size-6" />
+    </div>
   )
 }

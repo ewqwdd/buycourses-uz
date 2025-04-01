@@ -98,4 +98,4 @@ export const routerConfig = {
   },
 }
 
-export const noNavPages = ['/login', '/auth-confirm', '/register']
+export const noNavPages = ['/login', '/auth-confirm', '/register', '/deposit/a/confirmation']
